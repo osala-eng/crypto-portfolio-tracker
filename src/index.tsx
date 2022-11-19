@@ -13,5 +13,5 @@ export const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   ReactStrictMode,
-  rootElement,
+  rootElement
 );
