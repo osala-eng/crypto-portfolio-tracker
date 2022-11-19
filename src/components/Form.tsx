@@ -15,5 +15,5 @@ export const Form = () => {
             <input type='submit' value='Submit'  id='submit_button' className='input-line'/>
         </form>
     </div>
-  )
+  );
 };

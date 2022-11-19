@@ -7,11 +7,11 @@ import './index.css';
 
 export const ReactStrictMode = <React.StrictMode>
   <App />
-</React.StrictMode>
+</React.StrictMode>;
 
-export const rootElement = document.getElementById('root')
+export const rootElement = document.getElementById('root');
 
 ReactDOM.render(
   ReactStrictMode,
-  rootElement
+  rootElement,
 );
