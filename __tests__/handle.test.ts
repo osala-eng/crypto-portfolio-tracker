@@ -1,6 +1,7 @@
 import { APIGatewayEventDefaultAuthorizerContext, APIGatewayEventRequestContextWithAuthorizer } from "aws-lambda/common/api-gateway";
 import { handle } from "../handler";
 import * as awsLambda from "aws-lambda";
+import { HTTPCODES } from "../models/models";
 
 //Empty Args
 const emptyRequestContext: APIGatewayEventRequestContextWithAuthorizer<APIGatewayEventDefaultAuthorizerContext> = {
@@ -74,8 +75,21 @@ const EMPTY_CONTEXT: awsLambda.Context = {
 
 //Tests
 describe("Test initial output of handler", () => {
-  test("Return should be 200 status", async () => {
+  test("Return should be 400 status", async () => {
     const response = await handle(EMPTY_EVENT, EMPTY_CONTEXT);
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(HTTPCODES.C400);
   });
 });
+
+//Test with username >= 5
+const SUCCESS_EVENT = {
+  ...EMPTY_EVENT,
+  body: JSON.stringify({username: 'Iam User'})
+}
+
+describe('Successfull test case', ()=> {
+  test('Return should be 200 status code', async () => {
+    const response = await handle(SUCCESS_EVENT, EMPTY_CONTEXT);
+    expect(response.statusCode).toBe(HTTPCODES.C200);
+  })
+})
