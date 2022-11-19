@@ -1,12 +1,12 @@
 import * as aws from 'aws-sdk';
 import * as awsLambda from 'aws-lambda';
-import { HTTPCODES, User } from './models/models'
+import { HTTPCODES, User } from './models/models';
 
 aws.config.loadFromPath('./skillreactor/config.json');
 
 export const handle = async (
   event: awsLambda.APIGatewayEvent,
-  context: awsLambda.Context
+  _context: awsLambda.Context
 ) => {
   const userName = JSON.parse(event.body) as User;
   try {
