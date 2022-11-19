@@ -43,7 +43,9 @@
     ]
   },
   "devDependencies": {
+    "@types/react-test-renderer": "^18.0.0",
     "@types/styled-components": "^5.1.26",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "react-test-renderer": "^18.2.0"
   }
 }
