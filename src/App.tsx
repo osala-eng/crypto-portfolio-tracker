@@ -60,9 +60,9 @@ function App({ testv }: { testv?: number }) {
 
   return (
     <div className='App'>
-      {(mess === 1 || testv! === 2) && <SubmitSuccess data-testid='pop-up' />}
-      {(isLoading || testv! === 1) && <Waiting />}
-      {(mess === 2 || testv! === 3) && <SubmitError data-testid='pop-up' />}
+      {(mess === 1 || testv === 2) && <SubmitSuccess data-testid='pop-up' />}
+      {(isLoading || testv === 1) && <Waiting />}
+      {(mess === 2 || testv === 3) && <SubmitError data-testid='pop-up' />}
       <Form fetchCall={fetchCall} />
     </div>
   );
