@@ -14,7 +14,7 @@ export const Form = ({ fetchCall }: { fetchCall: (userName: User) => void }) => 
 
   /* istanbul ignore next */
   const userFn = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserName(e.target.value)
+    setUserName(e.target.value);
   };
 
   /* istanbul ignore next */

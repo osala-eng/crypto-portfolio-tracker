@@ -9,10 +9,11 @@ import { User } from './utils/types';
  * React app
  * @returns JSX App
  */
-function App({ testv }: { testv?: undefined | number }) {
+function App({ testv }: { testv?: number }) {
   const [error, setError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLoading, setIsloading] = useState(false);
+  const [mess, setMess] = useState(0);
 
   /**
    * Fetch function call
@@ -23,9 +24,9 @@ function App({ testv }: { testv?: undefined | number }) {
     setIsloading(true);
     await fetch(Url, {
       method: 'POST',
-      body: JSON.stringify(userName),
+      body: JSON.stringify(userName)
     })
-      .then((res) => {
+      .then(res => {
         if (res.status === 400) {
           throw new Error();
         }
@@ -44,18 +45,25 @@ function App({ testv }: { testv?: undefined | number }) {
    */
   /* istanbul ignore next */
   useEffect(() => {
+    if (isLoaded && !error) {
+      setMess(1);
+    }
+    else if (isLoaded && error) {
+      setMess(2);
+    }
     setTimeout(() => {
       setIsLoaded(false);
       setError(false);
+      setMess(0);
     }, 10000);
-  }, [isLoaded]);
+  }, [isLoaded, error]);
 
   return (
     <div className='App'>
-      {((isLoaded && !error) || testv === 2) && <SubmitSuccess />}
-      {(isLoading || testv === 1) && <Waiting />}
-      {((isLoaded && error) || testv === 3) && <SubmitError />}
-      <Form fetchCall={fetchCall}/>
+      {(mess === 1 || testv! === 2) && <SubmitSuccess data-testid='pop-up' />}
+      {(isLoading || testv! === 1) && <Waiting />}
+      {(mess === 2 || testv! === 3) && <SubmitError data-testid='pop-up' />}
+      <Form fetchCall={fetchCall} />
     </div>
   );
 };

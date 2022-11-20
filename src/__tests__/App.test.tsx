@@ -23,19 +23,19 @@ test('Compare app to a snapshot', () => {
 });
 
 test('App.tsx loading with success', () => {
-  render(<App testv={1} />);
+  const {getByTestId} = render(<App testv={1} />);
   const loadedElm = screen.getByText(/Loading please wait/i);
   expect(loadedElm).toBeInTheDocument();
 });
 
 test('App.tsx renders Username accepted with success', () => {
   render(<App testv={2}/>);
-  const loadedElm = screen.getByText(/username accepted/i);
+  const loadedElm = screen.getByText(/Success, username accepted/i);
   expect(loadedElm).toBeInTheDocument();
 });
 
 test('App.tsx renders username too short with success', () => {
   render(<App testv={3}/>);
-  const loadedElm = screen.getByText(/Username too short/i);
+  const loadedElm = screen.getByText(/Error: Username too short/i);
   expect(loadedElm).toBeInTheDocument();
 });
