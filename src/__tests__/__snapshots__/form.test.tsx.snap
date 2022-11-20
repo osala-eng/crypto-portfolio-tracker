@@ -1,27 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
-<div>
-  <div
-    className="pop-ups load-results"
-    id="submit_success"
-  >
-    Success, username accepted
-  </div>
-  <div
-    id="submit_error"
-  >
-    Error: Username too short
-  </div>
-  <div
-    className="pop-ups info-loader"
-    id="loading-data"
-  >
-    Loading please wait...
-  </div>
-</div>
-`;
-
 exports[`Form.tsx Form renders without crashing 1`] = `
 <div
   className="form-container"
@@ -59,17 +37,17 @@ exports[`Form.tsx Form renders without crashing 1`] = `
 
 exports[`Pop ups match snapshots and render with success Check snapshots for pop ups 1`] = `
 <div>
-  <div
+  <html
     className="pop-ups load-results"
     id="submit_success"
   >
     Success, username accepted
-  </div>
-  <div
+  </html>
+  <html
     id="submit_error"
   >
     Error: Username too short
-  </div>
+  </html>
   <div
     className="pop-ups info-loader"
     id="loading-data"
