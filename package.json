@@ -1,5 +1,5 @@
 {
-  "name": "cryptoportfoliotracker",
+  "name": "react-typescript",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,8 +19,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --coverage --watchAll=false",
+    "eject": "react-scripts eject",
+    "submit": "node skillreactor/submit.js",
+    "testnowatch": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-test-renderer": "^18.0.0",
+    "react-test-renderer": "^18.2.0"
   }
 }

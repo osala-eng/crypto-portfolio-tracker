@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Compare app to a snapshot 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="form-container"
+    data-testid="form-id"
+  >
+    <form
+      className="input-form"
+    >
+      <div>
+        <label
+          className="input-line"
+          htmlFor="username_field"
+        >
+          Username
+        </label>
+        <input
+          className="input-line"
+          id="username_field"
+          name="username_field"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+      <button
+        className="input-line"
+        disabled={false}
+        id="submit_button"
+        onClick={[Function]}
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+`;
