@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const SubmitSuccess = () => {
   return (
@@ -14,7 +14,7 @@ export const SubmitError = () => {
 };
 
 export const Waiting = () => {
-    return <div id='loading-data' className='pop-ups info-loader'>
+    return (<div id='loading-data' className='pop-ups info-loader'>
         Loading please wait...
-    </div>
-}
+    </div>);
+};

@@ -23,11 +23,13 @@ exports[`Compare app to a snapshot 1`] = `
           id="username_field"
           name="username_field"
           onChange={[Function]}
+          placeholder="username"
           type="text"
         />
       </div>
       <button
         className="input-line"
+        data-testid="subbtn"
         disabled={false}
         id="submit_button"
         onClick={[Function]}

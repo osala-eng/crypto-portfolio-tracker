@@ -1,1 +1,1 @@
-export const backend_url = 'https://components.skillreactor.io/CryptoPortfolioTracker/jashon/onboarding-backend';
+export const Url = 'https://components.skillreactor.io/CryptoPortfolioTracker/jashon/onboarding-backend';

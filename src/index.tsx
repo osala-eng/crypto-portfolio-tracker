@@ -1,19 +1,15 @@
+/* istanbul ignore file */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-export const ReactStrictMode =
+const ReactStrictMode =
 <React.StrictMode>
-<App />
+    <App/>
 </React.StrictMode>;
 
-export const rootElement =
+const rootElement =
 document.getElementById('root') as HTMLElement;
-ReactDOM.createRoot(rootElement).render(ReactStrictMode);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const root = ReactDOM.createRoot(rootElement);
+root.render(ReactStrictMode);
