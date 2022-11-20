@@ -1,0 +1,21 @@
+#product_headline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#prod_head_container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+#product_description {
+    font-size: x-large;
+    text-align: left;
+}
+
+.crypto-headline{
+    text-align: left;
+}

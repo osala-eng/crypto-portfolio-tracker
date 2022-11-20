@@ -1,11 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Features from './components/Features';
+import Footer from './components/Footer';
+import Logo from './components/Logo';
+import ProductHeadline from './components/ProductHeadline';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">Welcome to SkillReactor!</header>
+      <Logo/>
+      <ProductHeadline/>
+      <Features/>
+      <Footer/>
     </div>
   );
 }
