@@ -1,0 +1,18 @@
+@keyframes info-animate {
+    0% {font-size: x-small;}
+    20% {font-size: small;}
+    40% {font-size: medium;}
+    60% {font-size: large;}
+    80% {font-size: x-large;}
+    100% {font-size: xx-large;}
+}
+.pop-ups {
+    margin: 20px auto;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.info-loader{
+    animation-name: info-animate;
+    animation-duration: 4s;
+}

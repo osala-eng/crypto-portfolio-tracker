@@ -12,6 +12,7 @@ module.exports = {
     ".build/",
     "coverage/",
     "jest.config.js",
-    "src/reportWebVitals.ts"
+    "src/reportWebVitals.ts",
+    "src/utils/*"
   ]
 };

@@ -24,4 +24,6 @@
 #submit_button {
     width: 100px;
     height: 40px;
+    cursor: pointer;
+    text-align: center;
 }

@@ -22,13 +22,16 @@ exports[`App.tsx App.tsx renders without crashing 1`] = `
           className="input-line"
           id="username_field"
           name="username_field"
+          onChange={[Function]}
           type="text"
         />
       </div>
       <input
         className="input-line"
+        disabled={false}
         id="submit_button"
-        type="submit"
+        onClick={[Function]}
+        readOnly={true}
         value="Submit"
       />
     </form>

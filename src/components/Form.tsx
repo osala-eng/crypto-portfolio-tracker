@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { User } from '../utils/types';
 import './Form.css';
 
-export const Form = () => {
+export const Form = ({fetchCall}:{fetchCall: (userName: User)=>void}) => {
+  const [userName, setUserName] = useState('');
+  const [busy, setBusy] = useState(false);
+
+  const submitAction = () => {
+    setBusy(true);
+    fetchCall({username: userName});
+  }
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setBusy(false);
+    }, 1000);
+
+  }, [busy]);
+
   return (
     <div className='form-container' data-testid='form-id'>
         <form className='input-form'>
@@ -10,9 +26,11 @@ export const Form = () => {
                     Username
                 </label>
                 <input type='text' name='username_field' id='username_field'
-                className='input-line'/>
+                className='input-line'
+                onChange={(e)=> setUserName(e.target.value)}/>
             </div>
-            <input type='submit' value='Submit'  id='submit_button' className='input-line'/>
+            <input value='Submit' readOnly disabled={busy} onClick={submitAction}
+            id='submit_button' className='input-line'/>
         </form>
     </div>
   );
