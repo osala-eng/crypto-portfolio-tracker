@@ -30,12 +30,12 @@ function App() {
     });
   };
 
-  useEffect(()=> {
-    setTimeout(()=> {
-      setIsLoaded(false);
-      setError(false);
-    }, 5000);
-  }, [isLoaded]);
+  // useEffect(()=> {
+  //   setTimeout(()=> {
+  //     setIsLoaded(false);
+  //     setError(false);
+  //   }, 5000);
+  // }, [isLoaded]);
 
   return (
     <div className='App'>
