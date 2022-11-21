@@ -8,3 +8,8 @@ export const ErrorMsg = () =>
 
 export const Loading = () =>
     <div id='loading-data'>Loading, please wait!!!</div>;
+
+export const LoginErr = ({loginerr}:{loginerr: string}) =>
+    <html id='login_error' className='pop-up-msgs'>
+       {loginerr}
+    </html>;

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-// import { BackendUrl } from '../data/config';
-import { ChangeEvent, ClickEvent, ID, MS } from '../data/types';
+import { LoginBackend } from '../data/config';
+import { ChangeEvent, ClickEvent, ID, MS, HTTP } from '../data/types';
 import './css/Register.css';
-import { ErrorMsg, Loading } from './Messages';
+import {LoginErr, Loading } from './Messages';
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
     const [state, setState] = useState({
@@ -12,6 +13,14 @@ const Login = () => {
 
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [errormes, setErrormes] = useState('');
+
+    const ERRORS = {
+        '1': 'Error: Unable to login, please fill all the details',
+        '2': 'Error: Unable to login, details do not match'
+    }
+
+    const navigate = useNavigate();
 
     /* istanbul ignore next */
     const handleState = (e: ChangeEvent, id: number) => {
@@ -35,24 +44,29 @@ const Login = () => {
         e.preventDefault();
         if (!state.password.length || !state.username.length) {
             setLoading(false);
+            setErrormes(ERRORS['1']);
             setError(true);
         }
 
         else {
             setLoading(true);
-            await fetch('https://google.com', {
-                // method: 'POST',
-                // body: JSON.stringify(state)
+            await fetch(LoginBackend, {
+                method: 'POST',
+                body: JSON.stringify(state)
             })
-                .then(() => {
+                .then((res) => {
                     setLoading(false);
-                    // if (res.status !== HTTP['201']) {
-                    //     throw new Error('User registration failed');
-                    // }
+                    if (res.status === HTTP['401']) {
+                        throw new Error('User registration failed');
+                    }
+                    else {
+                        navigate('/dashboard');
+                    }
                 })
                 .catch(() => {
                     setLoading(false);
-                    setError(true)
+                    setErrormes(ERRORS['2']);
+                    setError(true);
                 });
         }
     };
@@ -75,7 +89,7 @@ const Login = () => {
         }
 
         else if (error && !loading){
-            return <ErrorMsg />;
+            return <LoginErr loginerr={errormes}/>;
         }
 
         else {
