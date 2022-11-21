@@ -1,8 +1,12 @@
 #logo_disp {
+    position: fixed;
+    top: 0;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    width: 100%;
 }
 
 #name_box {

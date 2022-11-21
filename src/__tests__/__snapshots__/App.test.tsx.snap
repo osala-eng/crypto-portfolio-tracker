@@ -83,6 +83,77 @@ exports[`All snapshots match tree 1`] = `
       </div>
     </div>
   </div>
+  <div
+    id="register-container"
+  >
+    <h1
+      id="registration_heading"
+    >
+      Registration
+    </h1>
+    <form
+      id="registration_form"
+    >
+      <div
+        className="user-input"
+      >
+        <label
+          className="box-label"
+          htmlFor="username_field"
+        >
+          username
+        </label>
+        <input
+          className="box-input"
+          id="username_field"
+          name="username_field"
+          type="text"
+        />
+      </div>
+      <div
+        className="user-input"
+      >
+        <label
+          className="box-label"
+          htmlFor="email_field"
+        >
+          email
+        </label>
+        <input
+          className="box-input"
+          id="email_field"
+          name="email_field"
+          type="email"
+        />
+      </div>
+      <div
+        className="user-input"
+      >
+        <label
+          className="box-label"
+          htmlFor="password_field"
+        >
+          password
+        </label>
+        <input
+          className="box-input"
+          id="password_field"
+          name="password_field"
+          type="password"
+        />
+      </div>
+      <div
+        id="button_container"
+      >
+        <button
+          id="signup_button"
+          type="submit"
+        >
+          Signup
+        </button>
+      </div>
+    </form>
+  </div>
   <footer
     id="footer_container"
   >
