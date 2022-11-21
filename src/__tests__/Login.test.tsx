@@ -1,34 +1,31 @@
 import React from 'react';
 import { render, screen, waitFor, cleanup } from '@testing-library/react';
 import UserE from '@testing-library/user-event';
-import Register from '../components/Register';
+import Login from '../components/Login';
 
-
+const options = {
+    timeout: 3000
+}
 describe('Discover form elements and test empty input', () => {
-    render(<Register />);
+    render(<Login />);
     test('Find form components and test empty form', async () => {
         const button =
-        await waitFor(() => screen.findByText(/Signup/i));
+        await waitFor(() => screen.findByTestId(/login-btn/i), options);
         const username =
-        await waitFor(()=> screen.findByLabelText(/username/i))
+        await waitFor(()=> screen.findByTestId(/login-user/i), options)
         const password =
-        await waitFor(()=> screen.findByLabelText(/password/i))
-        const email =
-        await waitFor(()=> screen.findByLabelText(/email/i))
+        await waitFor(()=> screen.findByTestId(/login-pass/i), options)
 
         expect(button).toBeInTheDocument();
         expect(username).toBeInTheDocument();
-        expect(email).toBeInTheDocument();
         expect(password).toBeInTheDocument();
 
         UserE.paste(username, 'username');
         UserE.paste(password, 'PaSSworD');
-        UserE.paste(email, 'mail@user.com');
         UserE.click(button);
 
         UserE.clear(username);
         UserE.clear(password);
-        UserE.clear(email);
         UserE.click(button);
     });
 })

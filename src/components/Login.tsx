@@ -4,10 +4,9 @@ import { ChangeEvent, ClickEvent, HTTP, ID, MS } from '../data/types';
 import './css/Register.css';
 import { ErrorMsg, Loading } from './Messages';
 
-const Register = () => {
+const Login = () => {
     const [state, setState] = useState({
         username: '',
-        email: '',
         password: ''
     });
 
@@ -23,12 +22,6 @@ const Register = () => {
         }
         else if (id === ID['2']) {
             setState({
-                ...state, email: e.target.value
-            })
-        }
-
-        else if (id === ID['3']) {
-            setState({
                 ...state, password: e.target.value
             });
         }
@@ -40,22 +33,22 @@ const Register = () => {
     /* istanbul ignore next */
     const handleClick = async (e: ClickEvent) => {
         e.preventDefault();
-        if (!state.email.length || !state.password.length || !state.username.length) {
+        if (!state.password.length || !state.username.length) {
             setLoading(false);
             setError(true);
         }
 
         else {
             setLoading(true);
-            await fetch(BackendUrl, {
-                method: 'POST',
-                body: JSON.stringify(state)
+            await fetch('https://google.com', {
+                // method: 'POST',
+                // body: JSON.stringify(state)
             })
-                .then((res) => {
+                .then(() => {
                     setLoading(false);
-                    if (res.status !== HTTP['201']) {
-                        throw new Error('User registration failed');
-                    }
+                    // if (res.status !== HTTP['201']) {
+                    //     throw new Error('User registration failed');
+                    // }
                 })
                 .catch(() => {
                     setLoading(false);
@@ -75,6 +68,7 @@ const Register = () => {
 
     }, [loading, error]);
 
+    /* istanbul ignore next */
     const displayMsg = () => {
         if (loading){
             return <Loading />;
@@ -91,30 +85,28 @@ const Register = () => {
 
     return (
         <div id='register-container'>
-            <h1 id='registration_heading'>Registration</h1>
-            <form id='registration_form'>
-                <div className='user-input'>
-                    <label htmlFor='username_field' className='box-label'>username</label>
-                    <input type='text' id='username_field' name='username_field'
-                        className='box-input' onChange={(e) => handleState(e,ID['1'])} />
+            <h1 id='login_heading'>Login</h1>
+            <form id='login_form'>
+                <div className='user-input' id='user-input-div'>
+                    <label htmlFor='login_username_field' className='box-label'>username</label>
+                    <input type='text' id='login_username_field' name='login_username_field'
+                        className='box-input' onChange={(e) => handleState(e,ID['1'])}
+                        data-testid={'login-user'} />
                 </div>
                 <div className='user-input' >
-                    <label htmlFor='email_field' className='box-label'>email</label>
-                    <input type='email' id='email_field' name='email_field'
-                        className='box-input' onChange={(e) => handleState(e,ID['2'])} />
-                </div>
-                <div className='user-input'>
-                    <label htmlFor='password_field' className='box-label'>password</label>
-                    <input type='password' id='password_field' name='password_field'
-                        className='box-input' onChange={(e) => handleState(e,ID['3'])} />
+                    <label htmlFor='login_password_field' className='box-label'>password</label>
+                    <input type='password' id='login_password_field' name='login_password_field'
+                        className='box-input' onChange={(e) => handleState(e,ID['2'])}
+                        data-testid={'login-pass'}/>
                 </div>
                 {displayMsg()}
                 <div id='button_container'>
-                    <button type='submit' id='signup_button' onClick={handleClick} >Signup</button>
+                    <button type='submit' id='login_button' onClick={handleClick}
+                    data-testid={'login-btn'}>Login</button>
                 </div>
             </form>
         </div>
-       );
+    );
 };
 
-export default Register;
+export default Login;

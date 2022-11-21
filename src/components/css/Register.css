@@ -1,16 +1,22 @@
-#register-container {
+#parent_container_login {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    align-self: center;
+}
+
+#register-container, #register-container{
     display: flex;
     flex-direction: column;
     justify-content: baseline;
     align-items: baseline;
-    width: 90%;
-    align-self: center;
+    flex: 1;
 }
-#registration_heading {
+#registration_heading, #login_heading {
     flex: 1;
     text-align: left;
 }
-#registration_form{
+#registration_form, #login_form{
     flex: 5;
     min-width: 500px;
     border: 1px solid #112;
@@ -47,14 +53,23 @@
     border: 1px solid;
 }
 
-#signup_button {
+#signup_button{
     width: 150px;
     height: 50px;
     border-radius: 10px;
     cursor: pointer;
     margin: 20px auto;
 }
+#login_button {
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px auto;
+    margin-top: 60px;
+}
 
-#signup_button:hover{
-    background-color: lawngreen;
+#signup_button:hover, #login_button:hover{
+    background-color: black;
+    color: aliceblue;
 }
