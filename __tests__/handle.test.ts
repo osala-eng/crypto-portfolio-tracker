@@ -74,8 +74,37 @@ const EMPTY_CONTEXT: awsLambda.Context = {
 
 //Tests
 describe("Test initial output of handler", () => {
-  test("Return should be 200 status", async () => {
+  test("Return should be 400 status", async () => {
     const response = await handle(EMPTY_EVENT, EMPTY_CONTEXT);
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(400);
+  });
+});
+
+const user = JSON.stringify({
+  username: 'JohnDo',
+  email: 'mail@mail.com',
+  password: 'password'
+});
+
+describe('Make a request with valid user data', ()=> {
+  const DATA_EVENT = {...EMPTY_EVENT, body: user};
+  test('Add a new user to return 200', async ()=>{
+    const res = await handle(DATA_EVENT, EMPTY_CONTEXT);
+    expect(res.statusCode).toBe(200);
+  });
+});
+
+const wrongUser = JSON.stringify({
+  username: 'John',
+  email: 'mail@mail.com',
+  password: 'password'
+});
+
+describe('Make a request with an invalid user data', ()=> {
+  const DATA_EVENT = {...EMPTY_EVENT, body: wrongUser};
+  test('Expect an error message with code 400', async ()=>{
+    const res = await handle(DATA_EVENT, EMPTY_CONTEXT);
+    expect(res.statusCode).toBe(400);
+    expect(JSON.parse(res.body)).toBe('Credentials does not meet required standards');
   });
 });
