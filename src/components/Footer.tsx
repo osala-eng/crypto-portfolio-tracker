@@ -22,7 +22,7 @@ const Footer = () => {
                     <img src={linkedin} alt='linkedin icon' width={icon}
                         height={icon} />
                 </a>
-                <a href='//skillreactor.io' id='sm_linkedin' className='image-icos'>
+                <a href='//skillreactor.io' id='sm_twitter' className='image-icos'>
                     <img src={twitter} alt='twitter icon' width={icon}
                         height={icon} />
                 </a>
