@@ -1,7 +1,7 @@
 import * as AWS from 'aws-sdk';
 import { PromiseResult } from 'aws-sdk/lib/request';
 
-export interface userCredentials {
+export interface UserCredentials {
     username: string;
     password: string;
     email: string;

@@ -1,6 +1,6 @@
 import * as AWS from 'aws-sdk';
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
-import { DbResponse, userCredentials } from './types';
+import { DbResponse, UserCredentials } from './types';
 import * as crypto from 'crypto';
 
 /**
@@ -17,7 +17,7 @@ export class DataAccess {
     constructor(
         private readonly docClient: DocumentClient = new AWS.DynamoDB.DocumentClient(),
         private readonly tableName: string = 'CryptoPortfolioTracker-user-jashon',
-        private readonly hasherSecret: string = 'temp-str'
+        private readonly hasherSecret: string = 'temp-str',
     ) { };
 
     /**
@@ -25,13 +25,12 @@ export class DataAccess {
      * @param user - User Object
      * @returns - AWS dynamoDb response
      */
-    async createUser(user: userCredentials): Promise<DbResponse> {
+    async createUser(user: UserCredentials): Promise<DbResponse> {
         const tableData = { ...user, password: this.createHash(user.password) };
-        const res = await this.docClient.put({
+        return await this.docClient.put({
             TableName: this.tableName,
             Item: tableData
         }).promise();
-        return res;
     };
 
     /**

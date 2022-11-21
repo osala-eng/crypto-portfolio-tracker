@@ -1,9 +1,9 @@
-import * as aws from "aws-sdk";
-import * as awsLambda from "aws-lambda";
-import { DbResponse, userCredentials } from './dataLayer/types';
+import * as aws from 'aws-sdk';
+import * as awsLambda from 'aws-lambda';
+import { DbResponse, UserCredentials } from './dataLayer/types';
 import { DataAccess } from './dataLayer/dataAccess';
 
-aws.config.loadFromPath("./skillreactor/config.json");
+aws.config.loadFromPath('./skillreactor/config.json');
 
 export const handle = async (
   event: awsLambda.APIGatewayEvent,
@@ -15,7 +15,7 @@ export const handle = async (
     /**
      * Create a DB instance and create a new user
      */
-    const user = JSON.parse(event.body) as userCredentials;
+    const user = JSON.parse(event.body) as UserCredentials;
     const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(user.email);
 
     if (user.username.length < 5 || !validEmail || user.password.length < 8) {
@@ -27,9 +27,9 @@ export const handle = async (
     return {
       statusCode: 200,
       headers: {
-        "Content-Type": "*/*",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "*",
+        'Content-Type': '*/*',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify(response),
     };
@@ -38,9 +38,9 @@ export const handle = async (
     return {
       statusCode: 400,
       headers: {
-        "Content-Type": "*/*",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "*",
+        'Content-Type': '*/*',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify(e.message)
     };
