@@ -12,7 +12,7 @@ const Logo = () => {
             <h1 id='company_name'>Crypto Tracker</h1>
         </div>
     </div>
-  )
-}
+  );
+};
 
-export default Logo
+export default Logo;

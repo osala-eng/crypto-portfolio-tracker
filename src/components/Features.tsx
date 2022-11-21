@@ -17,7 +17,7 @@ const Features = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Features
+export default Features;

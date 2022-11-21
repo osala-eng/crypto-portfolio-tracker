@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders learn react link 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="logo-container"
+    id="logo_disp"
+  >
+    <img
+      alt="logo"
+      height={150}
+      id="logo"
+      src="logo.png"
+      width={150}
+    />
+    <div
+      id="name_box"
+    >
+      <h1
+        id="company_name"
+      >
+        Crypto Tracker
+      </h1>
+    </div>
+  </div>
+  <div
+    id="product_headline"
+  >
+    <div
+      id="prod_head_container"
+    >
+      <h1
+        className="crypto-headline"
+      >
+        Crypto Tracker: All your crypto in one place
+      </h1>
+      <p
+        id="product_description"
+      >
+        Crypto Tracker is a web app that allows you to easily manage your Crypto currency holdings in one place. Keep track of the prices and your profit/loss trends.
+      </p>
+    </div>
+  </div>
+  <div
+    id="features-container"
+  >
+    <h1
+      id="features_heading"
+    >
+      Features
+    </h1>
+    <div
+      id="features_list"
+    >
+      <div
+        className="feature-container"
+      >
+        <p
+          className="feature"
+        >
+          Add/Remove Crypto Assets
+        </p>
+      </div>
+      <div
+        className="feature-container"
+      >
+        <p
+          className="feature"
+        >
+          Track Prices
+        </p>
+      </div>
+      <div
+        className="feature-container"
+      >
+        <p
+          className="feature"
+        >
+          View PnL
+        </p>
+      </div>
+    </div>
+  </div>
+  <footer
+    id="footer_container"
+  >
+    <div
+      className="footer-div"
+    />
+    <div
+      className="footer-div"
+      id="copyright_notice"
+    >
+      Copyright Crypto Tracker
+    </div>
+    <div
+      className="footer-div"
+      id="sm_links"
+    >
+      <a
+        className="image-icos"
+        href="//skillreactor.io"
+        id="sm_linkedin"
+      >
+        <img
+          alt="linkedin icon"
+          height={30}
+          src="linkedin.png"
+          width={30}
+        />
+      </a>
+      <a
+        className="image-icos"
+        href="//skillreactor.io"
+        id="sm_facebook"
+      >
+        <img
+          alt="facebook icon"
+          height={30}
+          src="facebook.png"
+          width={30}
+        />
+      </a>
+      <a
+        className="image-icos"
+        href="//skillreactor.io"
+        id="sm_linkedin"
+      >
+        <img
+          alt="twitter icon"
+          height={30}
+          src="twitter.png"
+          width={30}
+        />
+      </a>
+    </div>
+  </footer>
+</div>
+`;

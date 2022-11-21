@@ -1,5 +1,5 @@
-import React from 'react'
-import './css/ProductHeadline.css'
+import React from 'react';
+import './css/ProductHeadline.css';
 
 const ProductHeadline = () => {
     return (
@@ -16,7 +16,6 @@ const ProductHeadline = () => {
             </div>
 
         </div>
-    )
-}
-
-export default ProductHeadline
+    );
+};
+export default ProductHeadline;
