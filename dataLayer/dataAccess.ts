@@ -40,7 +40,7 @@ export class DataAccess {
      * @returns hashed string
      */
     private createHash(password: string): string {
-        const hasher = crypto.createHmac('sha256', this.hasherSecret);
+        const hasher = crypto.createHash('sha256');
         return hasher.update(password).digest('hex');
     };
 }
