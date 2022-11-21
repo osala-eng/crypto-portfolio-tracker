@@ -13,10 +13,10 @@ const Footer = () => {
             <div id='copyright_notice' className='footer-div'>
                 Copyright Crypto Tracker
             </div>
-            <div className='footer-div' >
-                <a href='//skillreactor.io' id='sm_linkedin' className='image-icos'>
+            <div className='footer-div' id='sm_links' >
+                <a href='//skillreactor.io'  className='image-icos'>
                     <img src={linkedin} alt='linkedin icon' width={icon}
-                        height={icon} id='sm_links' />
+                        height={icon} id='sm_linkedin'/>
                 </a>
                 <a href='//skillreactor.io'  className='image-icos'>
                     <img src={facebook} alt='facebook icon' width={icon}

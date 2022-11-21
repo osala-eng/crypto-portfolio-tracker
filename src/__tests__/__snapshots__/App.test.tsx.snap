@@ -97,16 +97,16 @@ exports[`All snapshots match tree 1`] = `
     </div>
     <div
       className="footer-div"
+      id="sm_links"
     >
       <a
         className="image-icos"
         href="//skillreactor.io"
-        id="sm_linkedin"
       >
         <img
           alt="linkedin icon"
           height={30}
-          id="sm_links"
+          id="sm_linkedin"
           src="linkedin.png"
           width={30}
         />
