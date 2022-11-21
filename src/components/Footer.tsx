@@ -14,17 +14,17 @@ const Footer = () => {
                 Copyright Crypto Tracker
             </div>
             <div className='footer-div' id='sm_links' >
-                <a href='//skillreactor.io'  className='image-icos'>
-                    <img src={linkedin} alt='linkedin icon' width={icon}
-                        height={icon} id='sm_linkedin'/>
-                </a>
-                <a href='//skillreactor.io'  className='image-icos'>
+                <a href='//skillreactor.io' id='sm_facebook' className='image-icos'>
                     <img src={facebook} alt='facebook icon' width={icon}
-                        height={icon} id='sm_facebook'/>
+                        height={icon} />
                 </a>
-                <a href='//skillreactor.io'  className='image-icos'>
+                <a href='//skillreactor.io' id='sm_linkedin' className='image-icos'>
+                    <img src={linkedin} alt='linkedin icon' width={icon}
+                        height={icon} />
+                </a>
+                <a href='//skillreactor.io' id='sm_linkedin' className='image-icos'>
                     <img src={twitter} alt='twitter icon' width={icon}
-                        height={icon} id='sm_linkedin'/>
+                        height={icon} />
                 </a>
             </div>
         </footer>
