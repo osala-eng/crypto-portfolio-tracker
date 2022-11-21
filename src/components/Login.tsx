@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { BackendUrl } from '../data/config';
-import { ChangeEvent, ClickEvent, HTTP, ID, MS } from '../data/types';
+// import { BackendUrl } from '../data/config';
+import { ChangeEvent, ClickEvent, ID, MS } from '../data/types';
 import './css/Register.css';
 import { ErrorMsg, Loading } from './Messages';
 
