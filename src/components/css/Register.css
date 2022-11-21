@@ -41,6 +41,7 @@
     height: 30px;
     border-radius: 5px;
     border: 1px solid;
+    padding: 0 20px
 }
 .box-input:focus {
     border: 1px solid;

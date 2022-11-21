@@ -1,0 +1,8 @@
+#signup_error{
+    color: #f00;
+}
+
+#loading-data {
+    color: green;
+    animation: blink 2s linear infinite;
+}

@@ -107,6 +107,7 @@ exports[`All snapshots match tree 1`] = `
           className="box-input"
           id="username_field"
           name="username_field"
+          onChange={[Function]}
           type="text"
         />
       </div>
@@ -123,6 +124,7 @@ exports[`All snapshots match tree 1`] = `
           className="box-input"
           id="email_field"
           name="email_field"
+          onChange={[Function]}
           type="email"
         />
       </div>
@@ -139,6 +141,7 @@ exports[`All snapshots match tree 1`] = `
           className="box-input"
           id="password_field"
           name="password_field"
+          onChange={[Function]}
           type="password"
         />
       </div>
@@ -147,6 +150,7 @@ exports[`All snapshots match tree 1`] = `
       >
         <button
           id="signup_button"
+          onClick={[Function]}
           type="submit"
         >
           Signup
