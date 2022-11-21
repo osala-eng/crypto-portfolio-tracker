@@ -76,6 +76,15 @@ const EMPTY_CONTEXT: awsLambda.Context = {
 describe("Test initial output of handler", () => {
   test("Return should be 200 status", async () => {
     const response = await handle(EMPTY_EVENT, EMPTY_CONTEXT);
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(401);
   });
+
+  const CRED_EVENT = {...EMPTY_EVENT,
+    body: JSON.stringify({username: 'JohnW', password: 'WrongPass'})};
+
+  test('Test with wrong credentials', async ()=> {
+    const response = await handle(CRED_EVENT, EMPTY_CONTEXT);
+    expect(response.statusCode).toBe(401);
+    expect(JSON.parse(response.body)).toBe('Credentials provided does not match');
+  } )
 });
