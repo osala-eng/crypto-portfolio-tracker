@@ -30,12 +30,12 @@ const Register = () => {
         else if (id === ID['3']) {
             setState({
                 ...state, password: e.target.value
-            })
+            });
         }
         else {
             throw new Error('Unexpected value');
         }
-    }
+    };
 
     /* istanbul ignore next */
     const handleClick = async (e: ClickEvent) => {
@@ -62,7 +62,7 @@ const Register = () => {
                     setError(true)
                 });
         }
-    }
+    };
     /* istanbul ignore next */
     useEffect(()=>{
         const time = setTimeout(()=>{
@@ -87,7 +87,7 @@ const Register = () => {
         else {
             return <></>;
         }
-    }
+    };
 
     return (
         <div id='register-container'>
