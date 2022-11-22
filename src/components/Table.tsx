@@ -6,7 +6,7 @@ const TableData = ({ asset }: { asset: Asset }) => <tr className='table-row-clas
     <td className='table_data'>{asset.qtyOwed}</td>
     <td className='table_data'>{asset.price}</td>
     <td className='table_data'>{asset.total}</td>
-    <td className='table_data'>{`${asset.alloacation} %`}</td>
+    <td className='table_data'>{`${asset.alloacation}%`}</td>
 </tr>;
 
 export const Table = ({ assets }: { assets: Assets }) => <table

@@ -385,7 +385,7 @@ exports[`Test private render 1 Compare snapshot 1 1`] = `
           <td
             className="table_data"
           >
-            50 %
+            50%
           </td>
         </tr>
         <tr
@@ -414,7 +414,7 @@ exports[`Test private render 1 Compare snapshot 1 1`] = `
           <td
             className="table_data"
           >
-            50 %
+            50%
           </td>
         </tr>
       </tbody>
