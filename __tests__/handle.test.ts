@@ -72,10 +72,21 @@ const EMPTY_CONTEXT: awsLambda.Context = {
   }
 }
 
+jest.setTimeout(20000)
 //Tests
 describe("Test initial output of handler", () => {
-  test("Return should be 200 status", async () => {
+  test("Return should be 400 status", async () => {
     const response = await handle(EMPTY_EVENT, EMPTY_CONTEXT);
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(400);
   });
+
+  test('Should return 201 status code', async () => {
+    const response = await handle({...EMPTY_EVENT,
+      body: JSON.stringify({
+        username: 'JohnW',
+        token: 'bitcoin',
+        quantity: 3
+    })}, EMPTY_CONTEXT);
+    expect(response.statusCode).toBe(201)
+  })
 });

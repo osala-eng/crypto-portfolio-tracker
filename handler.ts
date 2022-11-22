@@ -1,19 +1,41 @@
-import * as aws from "aws-sdk";
-import * as awsLambda from "aws-lambda";
+import * as aws from 'aws-sdk';
+import * as awsLambda from 'aws-lambda';
+import {AssetQuery, HTTP} from './dataLayer/types';
+import {DataAccess} from './dataLayer/dataAccess';
 
-aws.config.loadFromPath("./skillreactor/config.json");
+aws.config.loadFromPath('./skillreactor/config.json');
 
 export const handle = async (
   event: awsLambda.APIGatewayEvent,
-  context: awsLambda.Context
+  _context: awsLambda.Context
 ) => {
+  try {
+    const updateData = JSON.parse(event.body) as AssetQuery;
+    if(!updateData.username.length || !updateData.token.length || updateData.quantity < 0){
+      throw new Error('missing the required data');
+    }
+    const DBhandler = new DataAccess();
+    const response = await DBhandler.updateAssets(updateData);
+
   return {
-    statusCode: 200,
+    statusCode: HTTP['201'],
     headers: {
-      "Content-Type": "*/*",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "*",
+      'Content-Type': '*/*',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*',
     },
-    body: "Hello!",
+    body: JSON.stringify(response),
   };
+}
+catch (e) {
+  return {
+    statusCode: HTTP['400'],
+    headers: {
+      'Content-Type': '*/*',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*',
+    },
+    body: JSON.stringify(e.message),
+  };
+}
 };
