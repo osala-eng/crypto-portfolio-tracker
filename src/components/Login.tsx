@@ -3,9 +3,9 @@ import { LoginBackend } from '../data/config';
 import { ChangeEvent, ClickEvent, ID, MS, HTTP } from '../data/types';
 import './css/Register.css';
 import {LoginErr, Loading } from './Messages';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,} from 'react-router-dom'
 
-const Login = () => {
+const Login = ({authenticate}:{authenticate?: ()=> void }) => {
     const [state, setState] = useState({
         username: '',
         password: ''
@@ -18,7 +18,7 @@ const Login = () => {
     const ERRORS = {
         '1': 'Error: Unable to login, please fill all the details',
         '2': 'Error: Unable to login, details do not match'
-    }
+    };
 
     const navigate = useNavigate();
 
@@ -56,11 +56,13 @@ const Login = () => {
             })
                 .then((res) => {
                     setLoading(false);
+
                     if (res.status === HTTP['401']) {
                         throw new Error('User registration failed');
                     }
                     else {
-                        navigate('/dashboard');
+                       authenticate!();
+                       navigate('/dashboard');
                     }
                 })
                 .catch(() => {

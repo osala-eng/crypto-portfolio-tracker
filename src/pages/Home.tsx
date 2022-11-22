@@ -8,7 +8,7 @@ import Logo from '../components/Logo';
 import ProductHeadline from '../components/ProductHeadline';
 import Register from '../components/Register';
 
-function Home() {
+function Home({authenticate}:{authenticate?: ()=>void}) {
   return (
     <div className="App">
       <Logo/>
@@ -16,7 +16,7 @@ function Home() {
       <Features/>
       <div id='parent_container_login'>
           <Register/>
-          <Login/>
+          <Login authenticate={authenticate}/>
       </div>
       <Footer/>
     </div>

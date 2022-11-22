@@ -8,13 +8,18 @@ exports[`All snapshots match tree 1`] = `
     className="logo-container"
     id="logo_disp"
   >
-    <img
-      alt="logo"
-      height={150}
-      id="logo"
-      src="logo.png"
-      width={150}
-    />
+    <a
+      href="#/"
+      onClick={[Function]}
+    >
+      <img
+        alt="logo"
+        height={150}
+        id="logo"
+        src="logo.png"
+        width={150}
+      />
+    </a>
     <div
       id="name_box"
     >
@@ -278,5 +283,43 @@ exports[`All snapshots match tree 1`] = `
       </a>
     </div>
   </footer>
+</div>
+`;
+
+exports[`Test private render Compare snapshot 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="logo-container"
+    id="logo_disp"
+  >
+    <a
+      href="#/"
+      onClick={[Function]}
+    >
+      <img
+        alt="logo"
+        height={150}
+        id="logo"
+        src="logo.png"
+        width={150}
+      />
+    </a>
+    <div
+      id="name_box"
+    >
+      <h1
+        id="company_name"
+      >
+        Crypto Tracker
+      </h1>
+    </div>
+  </div>
+  <html
+    id="dashboard_heading"
+  >
+    Dashboard
+  </html>
 </div>
 `;

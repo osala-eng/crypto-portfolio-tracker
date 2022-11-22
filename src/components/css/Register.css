@@ -8,7 +8,7 @@
 #register-container, #register-container{
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: space-around;
     align-items: baseline;
     flex: 1;
 }
@@ -17,11 +17,17 @@
     text-align: left;
 }
 #registration_form, #login_form{
-    flex: 5;
+    flex: 5 1;
     min-width: 500px;
     border: 1px solid #112;
     border-radius: 10px;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-around;
 }
+
 
 .user-input {
     display: flex;
@@ -66,7 +72,6 @@
     border-radius: 10px;
     cursor: pointer;
     margin: 20px auto;
-    margin-top: 60px;
 }
 
 #signup_button:hover, #login_button:hover{

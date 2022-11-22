@@ -29,3 +29,11 @@
     transform: rotate(360deg);
   }
 }
+
+#dashboard_heading{
+  margin-top: 150px;
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 30px;
+}
