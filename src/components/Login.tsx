@@ -57,7 +57,7 @@ const Login = ({authenticate}:{authenticate?: ()=> void }) => {
                 .then((res) => {
                     setLoading(false);
 
-                    if (res.status === HTTP['401']) {
+                    if (res.status !== HTTP['200']) {
                         throw new Error('User registration failed');
                     }
                     else {
