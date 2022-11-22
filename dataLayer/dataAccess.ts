@@ -75,12 +75,12 @@ export class DataAccess {
     async updateAssets(updateData: AssetQuery) {
         const Key = { username: updateData.username };
         const assets = await this.assetsQuery(updateData.username);
-
+        console.log(assets)
         const newAsseet = JSON.parse(
             `{"${updateData.token}" : { "quantity": ${updateData.quantity}}}`) as Assets;
 
         const updateAssets = { ...assets[0], ...newAsseet };
-
+        console.log(updateAssets)
         return await this.docClient.update({
             TableName: this.tableName,
             Key,
