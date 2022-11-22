@@ -9,7 +9,7 @@ export const assets: Assets = [
         alloacation: 50
     },
     {
-        token: 'euthereum',
+        token: 'ethereum',
         qtyOwed: 25,
         price: 200,
         total: 5000,
