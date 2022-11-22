@@ -1,0 +1,28 @@
+#crypto-input-form {
+    display: flex;
+    flex-direction: row;
+    max-width: 600px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.crypto-input-field, #crypto-button-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.crypto-text-input-class{
+    height: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 14px;
+    max-width: 130px;
+    margin-left: 20px;
+}
+#dashboard_add_button{
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
-import '../App.css'
-import '../components/css/Register.css'
+import '../App.css';
+import '../components/css/Register.css';
 import Features from '../components/Features';
 import Footer from '../components/Footer';
 import Login from '../components/Login';
