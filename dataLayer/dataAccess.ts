@@ -49,21 +49,37 @@ export class DataAccess {
     };
 
     /**
+     * Query assets from a json doc given a username
+     * @param user - username string
+     * @returns Assets[]
+     */
+    async assetsQuery(user: string) {
+        const result = await this.docClient.query({
+            TableName: this.tableName,
+            KeyConditionExpression: 'username = :user',
+            ProjectionExpression: 'Json.assets',
+            ExpressionAttributeValues: {
+                ':user': user
+            }
+        }).promise();
+
+        const {Items} = result;
+        return Items as Assets[];
+    };
+
+    /**
      * Update assets in ther user table
      * @param updateData
      * @returns Promise <void>
      */
     async updateAssets(updateData: AssetQuery) {
         const Key = { username: updateData.username };
-        let assets: Assets;
-        const response = (await this.queryUser(updateData.username)) as UserCredentials;
-        if (!!response.assets){
-            assets = response.assets as Assets;
-        }
+        const assets = await this.assetsQuery(updateData.username);
+
         const newAsseet = JSON.parse(
             `{"${updateData.token}" : { "quantity": ${updateData.quantity}}}`) as Assets;
 
-        const updateAssets = { ...assets!, ...newAsseet };
+        const updateAssets = { ...assets[0], ...newAsseet };
 
         return await this.docClient.update({
             TableName: this.tableName,
