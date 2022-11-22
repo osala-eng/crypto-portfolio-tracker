@@ -8,7 +8,7 @@ const Register = () => {
     const [state, setState] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
     });
 
     const [error, setError] = useState(false);
@@ -18,18 +18,18 @@ const Register = () => {
     const handleState = (e: ChangeEvent, id: number) => {
         if (id === ID['1']) {
             setState({
-                ...state, username: e.target.value
+                ...state, username: e.target.value,
             });
         }
         else if (id === ID['2']) {
             setState({
-                ...state, email: e.target.value
-            })
+                ...state, email: e.target.value,
+            });
         }
 
         else if (id === ID['3']) {
             setState({
-                ...state, password: e.target.value
+                ...state, password: e.target.value,
             });
         }
         else {
@@ -49,9 +49,9 @@ const Register = () => {
             setLoading(true);
             await fetch(BackendUrl, {
                 method: 'POST',
-                body: JSON.stringify(state)
+                body: JSON.stringify(state),
             })
-                .then((res) => {
+                .then(res => {
                     setLoading(false);
                     if (res.status !== HTTP['201']) {
                         throw new Error('User registration failed');
@@ -59,7 +59,7 @@ const Register = () => {
                 })
                 .catch(() => {
                     setLoading(false);
-                    setError(true)
+                    setError(true);
                 });
         }
     };
@@ -96,17 +96,17 @@ const Register = () => {
                 <div className='user-input'>
                     <label htmlFor='username_field' className='box-label'>username</label>
                     <input type='text' id='username_field' name='username_field'
-                        className='box-input' onChange={(e) => handleState(e,ID['1'])} />
+                        className='box-input' onChange={e => handleState(e,ID['1'])} />
                 </div>
                 <div className='user-input' >
                     <label htmlFor='email_field' className='box-label'>email</label>
                     <input type='email' id='email_field' name='email_field'
-                        className='box-input' onChange={(e) => handleState(e,ID['2'])} />
+                        className='box-input' onChange={e => handleState(e,ID['2'])} />
                 </div>
                 <div className='user-input'>
                     <label htmlFor='password_field' className='box-label'>password</label>
                     <input type='password' id='password_field' name='password_field'
-                        className='box-input' onChange={(e) => handleState(e,ID['3'])} />
+                        className='box-input' onChange={e => handleState(e,ID['3'])} />
                 </div>
                 {displayMsg()}
                 <div id='button_container'>

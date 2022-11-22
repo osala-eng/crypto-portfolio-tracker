@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../assets/logo.png';
 import './css/Logo.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const logoSize = 150;
 const Logo = () => {

@@ -5,7 +5,7 @@
     align-self: center;
 }
 
-#register-container, #register-container{
+#register-container, #login-container{
     display: flex;
     flex-direction: column;
     justify-content: space-around;

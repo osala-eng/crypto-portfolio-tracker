@@ -10,7 +10,7 @@ function App() {
   /* istanbul ignore next */
   const authenticate = () => {
     setAuth(true);
-  }
+  };
   return (
     <HashRouter>
       <Routes>

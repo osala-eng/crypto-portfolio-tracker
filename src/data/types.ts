@@ -6,22 +6,24 @@ export interface UserCredentials {
     password: string;
 };
 
-export type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
+export type ChangeEvent =
+    React.ChangeEvent<HTMLInputElement>;
 
-export type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
+export type ClickEvent =
+    React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
 export const HTTP = {
     '200': 200,
     '201': 201,
     '400': 400,
-    '401': 401
+    '401': 401,
 };
 
 export const MS = {
     '1000': 1000,
     '2000': 2000,
     '5000': 5000,
-    '10000': 10000
+    '10000': 10000,
 };
 
 export const ID = {
@@ -29,4 +31,4 @@ export const ID = {
     '1': 1,
     '2': 2,
     '3': 3,
-}
+};

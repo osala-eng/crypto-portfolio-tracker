@@ -3,12 +3,12 @@ import { LoginBackend } from '../data/config';
 import { ChangeEvent, ClickEvent, ID, MS, HTTP } from '../data/types';
 import './css/Register.css';
 import {LoginErr, Loading } from './Messages';
-import {useNavigate,} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 
 const Login = ({authenticate}:{authenticate?: ()=> void }) => {
     const [state, setState] = useState({
         username: '',
-        password: ''
+        password: '',
     });
 
     const [error, setError] = useState(false);
@@ -17,7 +17,7 @@ const Login = ({authenticate}:{authenticate?: ()=> void }) => {
 
     const ERRORS = {
         '1': 'Error: Unable to login, please fill all the details',
-        '2': 'Error: Unable to login, details do not match'
+        '2': 'Error: Unable to login, details do not match',
     };
 
     const navigate = useNavigate();
@@ -26,12 +26,12 @@ const Login = ({authenticate}:{authenticate?: ()=> void }) => {
     const handleState = (e: ChangeEvent, id: number) => {
         if (id === ID['1']) {
             setState({
-                ...state, username: e.target.value
+                ...state, username: e.target.value,
             });
         }
         else if (id === ID['2']) {
             setState({
-                ...state, password: e.target.value
+                ...state, password: e.target.value,
             });
         }
         else {
@@ -52,9 +52,9 @@ const Login = ({authenticate}:{authenticate?: ()=> void }) => {
             setLoading(true);
             await fetch(LoginBackend, {
                 method: 'POST',
-                body: JSON.stringify(state)
+                body: JSON.stringify(state),
             })
-                .then((res) => {
+                .then(res => {
                     setLoading(false);
 
                     if (res.status !== HTTP['200']) {
@@ -106,13 +106,13 @@ const Login = ({authenticate}:{authenticate?: ()=> void }) => {
                 <div className='user-input' id='user-input-div'>
                     <label htmlFor='login_username_field' className='box-label'>username</label>
                     <input type='text' id='login_username_field' name='login_username_field'
-                        className='box-input' onChange={(e) => handleState(e,ID['1'])}
+                        className='box-input' onChange={e => handleState(e,ID['1'])}
                         data-testid={'login-user'} />
                 </div>
                 <div className='user-input' >
                     <label htmlFor='login_password_field' className='box-label'>password</label>
                     <input type='password' id='login_password_field' name='login_password_field'
-                        className='box-input' onChange={(e) => handleState(e,ID['2'])}
+                        className='box-input' onChange={e => handleState(e,ID['2'])}
                         data-testid={'login-pass'}/>
                 </div>
                 {displayMsg()}
