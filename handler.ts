@@ -1,6 +1,6 @@
 import * as aws from 'aws-sdk';
 import * as awsLambda from 'aws-lambda';
-import {AssetQuery, HTTP} from './dataLayer/types';
+import {AssetQuery, HTTP, UserCredentials} from './dataLayer/types';
 import {DataAccess} from './dataLayer/dataAccess';
 
 aws.config.loadFromPath('./skillreactor/config.json');
@@ -15,7 +15,7 @@ export const handle = async (
       throw new Error('missing the required data');
     }
     const DBhandler = new DataAccess();
-    const response = await DBhandler.updateAssets(updateData);
+    const res = await DBhandler.updateAssets(updateData);
 
   return {
     statusCode: HTTP['201'],
@@ -24,7 +24,7 @@ export const handle = async (
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': '*',
     },
-    body: JSON.stringify(response),
+    body: JSON.stringify(res),
   };
 }
 catch (e) {

@@ -57,14 +57,13 @@ export class DataAccess {
         const result = await this.docClient.query({
             TableName: this.tableName,
             KeyConditionExpression: 'username = :user',
-            ProjectionExpression: 'Json.assets',
             ExpressionAttributeValues: {
                 ':user': user
             }
         }).promise();
 
         const {Items} = result;
-        return Items as Assets[];
+        return Items;
     };
 
     /**
@@ -74,19 +73,17 @@ export class DataAccess {
      */
     async updateAssets(updateData: AssetQuery) {
         const Key = { username: updateData.username };
-        const assets = await this.assetsQuery(updateData.username);
-        console.log(assets)
+        const assets = await this.assetsQuery(updateData.username) as UserCredentials[];
         const newAsseet = JSON.parse(
             `{"${updateData.token}" : { "quantity": ${updateData.quantity}}}`) as Assets;
 
-        const updateAssets = { ...assets[0], ...newAsseet };
-        console.log(updateAssets)
+        const updateAssets = { ...assets[0].assets, ...newAsseet };
         return await this.docClient.update({
             TableName: this.tableName,
             Key,
-            UpdateExpression: `set assets = :new_assets`,
+            UpdateExpression: `set assets = :num`,
             ExpressionAttributeValues: {
-                ':new_assets': `${updateAssets}`
+                ':num': {...updateAssets}
             }
         }).promise();
     };
@@ -94,7 +91,7 @@ export class DataAccess {
     /**
      * Checks if the hash of a string provided matches it
      * @param key - object containig a string and hash to comare it with
-     * @returns
+     * @returns boolean
      */
     compareHash = (key: CmpHash): boolean => this.createHash(key.plain) === key.hash;
 
@@ -107,4 +104,4 @@ export class DataAccess {
         const hasher = crypto.createHash('sha256');
         return hasher.update(password).digest('hex');
     };
-}
+};
