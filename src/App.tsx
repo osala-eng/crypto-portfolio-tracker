@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home authenticate={authenticate}/>}/>
         <Route path='/dashboard' element={
-          <Private access={auth}>
+          <Private access={!auth}>
             <Dashbord/>
           </Private>
         }/>

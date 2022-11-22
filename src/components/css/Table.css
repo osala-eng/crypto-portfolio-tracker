@@ -1,0 +1,12 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.table_heading{
+    min-width: 100px;
+}
+
+#table-container{
+    max-width: 600px;
+}

@@ -35,5 +35,12 @@
   text-align: left;
   font-size: 30px;
   font-weight: bold;
-  padding-left: 30px;
+  height: fit-content;
+}
+
+#dashboard-container{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  align-self: center;
 }

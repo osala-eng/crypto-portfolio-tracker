@@ -32,3 +32,13 @@ export const ID = {
     '2': 2,
     '3': 3,
 };
+
+export interface Asset {
+    token: string;
+    qtyOwed: number;
+    price: number;
+    total: number;
+    alloacation: number
+}
+
+export type Assets = Asset[];
