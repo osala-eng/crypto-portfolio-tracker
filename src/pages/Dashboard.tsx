@@ -1,8 +1,8 @@
 import React from 'react';
-import '../App.css'
+import '../App.css';
 import Logo from '../components/Logo';
-import {Table} from '../components/Table'
-import {assets} from '../data/mockdata'
+import {Table} from '../components/Table';
+import {assets} from '../data/mockdata';
 
 function Dashbord() {
   return (

@@ -1,9 +1,17 @@
 import React from 'react';
-import {Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
-const Private = ({children, access}: {
+const Private = ({ children, access }: {
     children: JSX.Element,
     access?: boolean
-}) =>  access ? children : <Navigate to={'/'}/>;
+}) => {
+    if (access) {
+        return (children)
+    }
+    /* istanbul ignore next */
+    else {
+        return (<Navigate to={'/'} />)
+    }
+};
 
 export default Private;
