@@ -10,3 +10,13 @@ table, th, td {
 #table-container{
     max-width: 600px;
 }
+
+.delete_button{
+    text-decoration: none;
+    color: crimson;
+}
+
+.delete_button:hover{
+    color: #fff;
+    background-color: crimson;
+}

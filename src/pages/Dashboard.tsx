@@ -22,7 +22,6 @@ function Dashbord({user}:{user: string}) {
       { method: 'GET' })
         .then(res => res.json())
         .then(res => {
-          console.log(res)
           const assets = res as Assets;
           setHoldings(assets);
         })
@@ -39,7 +38,7 @@ function Dashbord({user}:{user: string}) {
       <Logo/>
       <div id='dashboard-container'>
           <div id='dashboard_heading'>Dashboard</div>
-          <Table assets={holdings}/>
+          <Table assets={holdings} username={user} updateDash={update}/>
           <CryptoForm username={user} update={update}/>
       </div>
     </div>

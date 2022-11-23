@@ -356,6 +356,11 @@ exports[`Test private render 1 Compare snapshot 1 1`] = `
           >
             Allocation
           </th>
+          <th
+            className="table_heading"
+          >
+            Actions
+          </th>
         </tr>
       </thead>
       <tbody />

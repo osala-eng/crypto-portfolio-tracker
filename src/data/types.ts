@@ -12,6 +12,9 @@ export type ChangeEvent =
 export type ClickEvent =
     React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
+export type LinkEvent =
+    React.MouseEvent<HTMLAnchorElement, MouseEvent>;
+
 export const HTTP = {
     '200': 200,
     '201': 201,
