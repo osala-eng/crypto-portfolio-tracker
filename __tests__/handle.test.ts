@@ -73,9 +73,25 @@ const EMPTY_CONTEXT: awsLambda.Context = {
 }
 
 //Tests
-describe("Test initial output of handler", () => {
-  test("Return should be 200 status", async () => {
+describe("End to request test", () => {
+  test("Return should be 400 status", async () => {
     const response = await handle(EMPTY_EVENT, EMPTY_CONTEXT);
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(400);
   });
+
+  const EVENT = {...EMPTY_EVENT,
+    queryStringParameters: {username: 'JohnW'}
+  }
+  test('Expect status to be 200 for the right param', async () => {
+      const response = await handle(EVENT, EMPTY_CONTEXT);
+      expect(response.statusCode).toBe(200)
+  });
+
+  const WRON_EVENT = {...EMPTY_EVENT,
+    queryStringParameters: {notUserName: 'JohnW'}
+  }
+  test('Expect status to be 400 for wrong query param', async () => {
+      const response = await handle(WRON_EVENT, EMPTY_CONTEXT);
+      expect(response.statusCode).toBe(400)
+  })
 });
