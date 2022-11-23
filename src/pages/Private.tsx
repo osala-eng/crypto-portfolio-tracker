@@ -3,14 +3,13 @@ import { Navigate } from 'react-router-dom';
 
 const Private = ({ children, access }: {
     children: JSX.Element,
-    access?: boolean
-}) => {
+    access?: boolean }) => {
     if (access) {
-        return (children)
+        return (children);
     }
     /* istanbul ignore next */
     else {
-        return (<Navigate to={'/'} />)
+        return (<Navigate to={'/'} />);
     }
 };
 

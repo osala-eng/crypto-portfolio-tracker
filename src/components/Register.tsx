@@ -8,8 +8,7 @@ const Register = () => {
     const [state, setState] = useState({
         username: '',
         email: '',
-        password: '',
-    });
+        password: ''});
 
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -18,19 +17,16 @@ const Register = () => {
     const handleState = (e: ChangeEvent, id: number) => {
         if (id === ID['1']) {
             setState({
-                ...state, username: e.target.value,
-            });
+                ...state, username: e.target.value});
         }
         else if (id === ID['2']) {
             setState({
-                ...state, email: e.target.value,
-            });
+                ...state, email: e.target.value });
         }
 
         else if (id === ID['3']) {
             setState({
-                ...state, password: e.target.value,
-            });
+                ...state, password: e.target.value });
         }
         else {
             throw new Error('Unexpected value');
@@ -49,8 +45,7 @@ const Register = () => {
             setLoading(true);
             await fetch(BackendUrl, {
                 method: 'POST',
-                body: JSON.stringify(state),
-            })
+                body: JSON.stringify(state)})
                 .then(res => {
                     setLoading(false);
                     if (res.status !== HTTP['201']) {

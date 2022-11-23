@@ -52,11 +52,9 @@ const Login = ({authenticate}:{authenticate?: (user: string)=> void }) => {
             setLoading(true);
             await fetch(LoginBackend, {
                 method: 'POST',
-                body: JSON.stringify(state),
-            })
+                body: JSON.stringify(state)})
                 .then(res => {
                     setLoading(false);
-
                     if (res.status !== HTTP['200']) {
                         throw new Error('User registration failed');
                     }

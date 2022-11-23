@@ -13,8 +13,7 @@ export const CryptoForm = ({
     const [state, setState] = useState({
         username: username,
         token: '',
-        quantity: 0
-    });
+        quantity: 0 });
 
     /* istanbul ignore next */
     const handleSubmit = async (event: ClickEvent) => {
@@ -26,8 +25,7 @@ export const CryptoForm = ({
             setLoading(true);
             await fetch(AssetsService, {
                 method: 'POST',
-                body: JSON.stringify(state)
-            })
+                body: JSON.stringify(state)})
                 .then(res => {
                     setLoading(false);
                     if (res.status !== HTTP['200']) {

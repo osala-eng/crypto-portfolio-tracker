@@ -6,10 +6,7 @@ export const assets: Assets = [
         quantity: 0.5,
         price: 10000,
         totalValue: 5000,
-        allocation: 50
-    },
+        allocation: 50 },
     {
         token: 'ethereum',
-        quantity: 25
-    }
-];
+        quantity: 25  }];
