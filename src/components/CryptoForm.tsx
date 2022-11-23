@@ -10,13 +10,13 @@ export const CryptoForm = ({ username }: { username?: string }) => {
     const [state, setState] = useState({
         username: username,
         token: '',
-        quantity: ''
+        quantity: 0
     });
 
     /* istanbul ignore next */
     const handleSubmit = async (event: ClickEvent) => {
         event.preventDefault();
-        if (!state.quantity.length || !state.username || !state.token.length) {
+        if (state.quantity < 0 || !state.username || !state.token.length) {
             setError(true);
         }
         else {
@@ -54,7 +54,7 @@ export const CryptoForm = ({ username }: { username?: string }) => {
             setState({ ...state, token: event.target.value });
         }
         else if (id === ID['1']) {
-            setState({ ...state, quantity: event.target.value });
+            setState({ ...state, quantity: +event.target.value});
         }
         else {
             throw new Error('ID value unexpected');
@@ -66,18 +66,18 @@ export const CryptoForm = ({ username }: { username?: string }) => {
             <label htmlFor='dashboard_token' className='crypto-input-label-class'>
                 Token
             </label>
-            <input type="text" id='dashboard_token' onChange={e => changeEvent(e, ID['0'])}
+            <input type='text' id='dashboard_token' onChange={e => changeEvent(e, ID['0'])}
                 className='crypto-text-input-class' />
         </div>
         <div className='crypto-input-field'>
             <label htmlFor='dashboard_quantity' className='crypto-input-label-class'>
                 Qty. Owned
             </label>
-            <input type="text" id='dashboard_quantity' onChange={e => changeEvent(e, ID['1'])}
+            <input type='number' id='dashboard_quantity' onChange={e => changeEvent(e, ID['1'])}
                 className='crypto-text-input-class' />
         </div>
         <div id='crypto-button-container'>
-            <button type="submit" id='dashboard_add_button'
+            <button type='submit' id='dashboard_add_button'
                 onClick={handleSubmit} disabled={loading}>Add Asset</button>
             <div id='add_asset_error' style={{ display: error ? 'block' : 'none' }}
             >Error: Please fill all the details</div>
