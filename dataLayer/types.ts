@@ -1,4 +1,4 @@
-import * as AWS from 'aws-sdk';
+import {DynamoDB, AWSError} from 'aws-sdk';
 import { PromiseResult } from 'aws-sdk/lib/request';
 
 export interface UserCredentials {
@@ -19,22 +19,22 @@ export interface CmpHash {
 };
 
 export type DbResponse =
-    PromiseResult<AWS.DynamoDB.DocumentClient.PutItemOutput, AWS.AWSError>;
+    PromiseResult<DynamoDB.DocumentClient.PutItemOutput, AWSError>;
 
 export const HTTP = {
     '401' : 401,
     '200' : 200,
     '201' : 201,
     '400' : 400
-}
+};
 
 export interface Asset {
     quantity: number;
-}
+};
 
 export interface Assets {
     [token: string]: Asset
-}
+};
 
 export interface AssetQuery {
     username: string;

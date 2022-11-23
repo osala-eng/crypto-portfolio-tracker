@@ -1,13 +1,13 @@
-import * as aws from 'aws-sdk';
-import * as awsLambda from 'aws-lambda';
+import {config} from 'aws-sdk';
+import {APIGatewayEvent, Context} from 'aws-lambda';
 import { HTTP, UserCredentials } from './dataLayer/types';
 import {DataAccess} from './dataLayer/dataAccess';
 
-aws.config.loadFromPath('./skillreactor/config.json');
+config.loadFromPath('./skillreactor/config.json');
 
 export const handle = async (
-  event: awsLambda.APIGatewayEvent,
-  _context: awsLambda.Context
+  event: APIGatewayEvent,
+  _context: Context
 ) => {
   try {
     const {username} = event.queryStringParameters;
@@ -16,10 +16,12 @@ export const handle = async (
     const assets = response[0].assets;
     const resBody = [];
     for(const asset in assets){
+      if(asset){
         resBody.push({
           token: asset,
           ...assets[asset]
         });
+      }
     }
 
     return {
@@ -41,6 +43,6 @@ export const handle = async (
         'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify(e.message),
-    }
+    };
   }
 };

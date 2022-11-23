@@ -1,4 +1,4 @@
-import * as AWS from 'aws-sdk';
+import {DynamoDB} from 'aws-sdk';
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 import { Assets, AssetQuery, CmpHash, DbResponse, UserCredentials } from './types';
 import * as crypto from 'crypto';
@@ -15,7 +15,7 @@ export class DataAccess {
      * @param hasherSecret - Secret key for hashing passwords
      */
     constructor(
-        private readonly docClient: DocumentClient = new AWS.DynamoDB.DocumentClient(),
+        private readonly docClient: DocumentClient = new DynamoDB.DocumentClient(),
         private readonly tableName: string = 'CryptoPortfolioTracker-user-jashon',
         private readonly hasherSecret: string = 'temp-str',
     ) { };
@@ -76,11 +76,12 @@ export class DataAccess {
         const assets = await this.assetsQuery(updateData.username) as UserCredentials[];
         const newAsseet = JSON.parse(
             `{"${updateData.token}" : { "quantity": ${updateData.quantity}}}`) as Assets;
-
         const updateAssets = { ...assets[0].assets, ...newAsseet };
+
+
         return await this.docClient.update({
-            TableName: this.tableName,
             Key,
+            TableName: this.tableName,
             UpdateExpression: `set assets = :num`,
             ExpressionAttributeValues: {
                 ':num': {...updateAssets}
