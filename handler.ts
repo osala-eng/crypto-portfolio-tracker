@@ -13,7 +13,14 @@ export const handle = async (
     const {username} = event.queryStringParameters;
     const DBaccess = new DataAccess();
     const response = await DBaccess.assetsQuery(username) as UserCredentials[];
-    const assets = JSON.stringify(response[0].assets);
+    const assets = response[0].assets;
+    const resBody = [];
+    for(const asset in assets){
+        resBody.push({
+          token: asset,
+          ...assets[asset]
+        });
+    }
 
     return {
       statusCode: HTTP['200'],
@@ -22,7 +29,7 @@ export const handle = async (
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': '*',
       },
-      body: '[' + assets.slice(1,-1) + ']',
+      body: JSON.stringify(resBody),
     };
   }
   catch (e) {
