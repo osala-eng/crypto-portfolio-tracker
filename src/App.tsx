@@ -16,9 +16,9 @@ function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route path='/' element={<Home authenticate={authenticate}/>}/>
-        <Route path='/dashboard' element={
-          <Private access={auth}>
+        <Route path='/dashboard' element={<Home authenticate={authenticate}/>}/>
+        <Route path='/' element={
+          <Private access={!auth}>
             <Dashbord user={user}/>
           </Private>
         }/>

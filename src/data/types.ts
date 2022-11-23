@@ -38,7 +38,7 @@ export interface Asset {
     quantity: number;
     price?: number;
     total?: number;
-    alloacation?: number
+    allocation?: number
 }
 
 export type Assets = Asset[];

@@ -6,3 +6,6 @@ export const LoginBackend =
 
 export const AssetsService =
     'https://components.skillreactor.io/CryptoPortfolioTracker/jashon/assets-service';
+
+export const HoldingsBackend =
+    'https://components.skillreactor.io/CryptoPortfolioTracker/jashon/portfolio-service';

@@ -4,12 +4,12 @@ import './css/Table.css';
 const TableData = ({ asset }: { asset: Asset }) => <tr className='table-row-class'>
     <td className='table_data'>{asset.token}</td>
     <td className='table_data'>{asset.quantity}</td>
-    <td className='table_data'>{asset.price}</td>
-    <td className='table_data'>{asset.total}</td>
-    <td className='table_data'>{`${asset.alloacation}%`}</td>
+    <td className='table_data'>{asset.price ? asset.price: ''}</td>
+    <td className='table_data'>{asset.total ? asset.total : ''}</td>
+    <td className='table_data'>{asset.allocation ? `${asset.allocation}%` : ''}</td>
 </tr>;
 
-export const Table = ({ assets }: { assets: Assets }) => <table
+export const Table = ({ assets }: { assets?: Assets }) => <table
     id='table-container'>
     <thead>
         <tr>
@@ -22,7 +22,7 @@ export const Table = ({ assets }: { assets: Assets }) => <table
     </thead>
     <tbody>
         {
-            assets.map((asset) => <TableData asset={asset} key={asset.token} />)
+            assets?.map((asset) => <TableData asset={asset} key={asset.token} />)
         }
     </tbody>
 
