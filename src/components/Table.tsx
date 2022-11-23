@@ -3,7 +3,7 @@ import './css/Table.css';
 
 const TableData = ({ asset }: { asset: Asset }) => <tr className='table-row-class'>
     <td className='table_data'>{asset.token}</td>
-    <td className='table_data'>{asset.qtyOwed}</td>
+    <td className='table_data'>{asset.quantity}</td>
     <td className='table_data'>{asset.price}</td>
     <td className='table_data'>{asset.total}</td>
     <td className='table_data'>{`${asset.alloacation}%`}</td>

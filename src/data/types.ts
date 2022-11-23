@@ -35,10 +35,10 @@ export const ID = {
 
 export interface Asset {
     token: string;
-    qtyOwed: number;
-    price: number;
-    total: number;
-    alloacation: number
+    quantity: number;
+    price?: number;
+    total?: number;
+    alloacation?: number
 }
 
 export type Assets = Asset[];
