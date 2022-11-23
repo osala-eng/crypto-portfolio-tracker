@@ -2,6 +2,7 @@ import {config} from 'aws-sdk';
 import {APIGatewayEvent, Context} from 'aws-lambda';
 import { HTTP, UserCredentials } from './dataLayer/types';
 import {DataAccess} from './dataLayer/dataAccess';
+import {Portforlio} from './utitlities/utils';
 
 config.loadFromPath('./skillreactor/config.json');
 
@@ -19,20 +20,21 @@ export const handle = async (
       if(asset){
         resBody.push({
           token: asset,
-          ...assets[asset]
-        });
+          ...assets[asset]});
       }
     }
+
+    const PortHandler = new Portforlio(resBody);
+    await PortHandler.fetchPrices();
+    PortHandler.updateResults();
 
     return {
       statusCode: HTTP['200'],
       headers: {
         'Content-Type': '*/*',
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': '*',
-      },
-      body: JSON.stringify(resBody),
-    };
+        'Access-Control-Allow-Methods': '*'},
+      body: JSON.stringify(PortHandler.userPortfolio)};
   }
   catch (e) {
     return {
@@ -40,9 +42,7 @@ export const handle = async (
       headers: {
         'Content-Type': '*/*',
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': '*',
-      },
-      body: JSON.stringify(e.message),
-    };
+        'Access-Control-Allow-Methods': '*'},
+      body: JSON.stringify(e.message)};
   }
 };

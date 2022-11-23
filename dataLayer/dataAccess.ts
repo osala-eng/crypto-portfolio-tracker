@@ -17,8 +17,7 @@ export class DataAccess {
     constructor(
         private readonly docClient: DocumentClient = new DynamoDB.DocumentClient(),
         private readonly tableName: string = 'CryptoPortfolioTracker-user-jashon',
-        private readonly hasherSecret: string = 'temp-str',
-    ) { };
+        private readonly hasherSecret: string = 'temp-str') { };
 
     /**
      * createUser - Add user creadential to a DB table
@@ -29,8 +28,8 @@ export class DataAccess {
         const tableData = { ...user, password: this.createHash(user.password) };
         return await this.docClient.put({
             TableName: this.tableName,
-            Item: tableData
-        }).promise();
+            Item: tableData})
+            .promise();
     };
     /**
      * query User from a table
@@ -42,8 +41,8 @@ export class DataAccess {
             TableName: this.tableName,
             Key: {
                 username: user
-            }
-        }).promise();
+            }})
+            .promise();
 
         return Item as UserCredentials;
     };
@@ -59,8 +58,8 @@ export class DataAccess {
             KeyConditionExpression: 'username = :user',
             ExpressionAttributeValues: {
                 ':user': user
-            }
-        }).promise();
+            }})
+            .promise();
 
         const {Items} = result;
         return Items;
@@ -77,7 +76,7 @@ export class DataAccess {
         const newAsseet = JSON.parse(
             `{"${updateData.token}" : { "quantity": ${updateData.quantity}}}`) as Assets;
         const updateAssets = { ...assets[0].assets, ...newAsseet };
-
+        // const updateAssets = {bitcoin: {quantity: 1}, ethereum: {quantity: 3}}
 
         return await this.docClient.update({
             Key,
@@ -85,8 +84,8 @@ export class DataAccess {
             UpdateExpression: `set assets = :num`,
             ExpressionAttributeValues: {
                 ':num': {...updateAssets}
-            }
-        }).promise();
+            }})
+            .promise();
     };
 
     /**

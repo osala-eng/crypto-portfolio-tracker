@@ -5,7 +5,7 @@ export interface UserCredentials {
     username: string;
     password: string;
     email: string;
-    assets?: Assets
+    assets?: Assets;
 };
 
 export interface UserLogin {
@@ -25,19 +25,26 @@ export const HTTP = {
     '401' : 401,
     '200' : 200,
     '201' : 201,
-    '400' : 400
-};
+    '400' : 400 };
 
 export interface Asset {
     quantity: number;
 };
 
 export interface Assets {
-    [token: string]: Asset
+    [token: string]: Asset;
 };
 
 export interface AssetQuery {
     username: string;
     token: string;
     quantity: number;
+};
+
+export interface PortfolioRes {
+    token: string;
+    quantity: number;
+    totalValue: number;
+    price: number;
+    allocation?: number;
 };
