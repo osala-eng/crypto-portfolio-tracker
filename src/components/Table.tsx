@@ -5,7 +5,7 @@ const TableData = ({ asset }: { asset: Asset }) => <tr className='table-row-clas
     <td className='table_data'>{asset.token}</td>
     <td className='table_data'>{asset.quantity}</td>
     <td className='table_data'>{asset.price ? asset.price: ''}</td>
-    <td className='table_data'>{asset.total ? asset.total : ''}</td>
+    <td className='table_data'>{asset.totalValue ? asset.totalValue : ''}</td>
     <td className='table_data'>{asset.allocation ? `${asset.allocation}%` : ''}</td>
 </tr>;
 

@@ -4,8 +4,7 @@ import renderer from 'react-test-renderer';
 import Private from '../pages/Private';
 import {HashRouter, Routes, Route, useNavigate} from 'react-router-dom';
 import Dashbord from '../pages/Dashboard';
-import {render, screen, waitFor} from '@testing-library/react';
-import userEvent  from '@testing-library/user-event';
+
 
 const func = jest.fn();
 
@@ -29,7 +28,7 @@ const RoutedElm0 = <HashRouter>
     <Routes>
         <Route path='/' element={
             <Private access={true}>
-                <Dashbord/>
+                <Dashbord  user='JohnW'/>
             </Private>
         }/>
     </Routes>

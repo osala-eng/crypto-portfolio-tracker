@@ -1,34 +1,38 @@
 import React , {useEffect, useState} from 'react';
-import { setConstantValue } from 'typescript';
 import '../App.css';
 import { CryptoForm } from '../components/CryptoForm';
 import Logo from '../components/Logo';
 import {Table} from '../components/Table';
 import { HoldingsBackend } from '../data/config';
-import {assets} from '../data/mockdata';
-import { Assets, HTTP } from '../data/types';
+import { Assets } from '../data/types';
 
 function Dashbord({user}:{user: string}) {
   const [holdings, setHoldings] = useState<Assets | undefined>();
+  const [newToken, setNewToken] = useState(false);
 
+  /* istanbul ignore next */
+  const update = () => {
+    setNewToken(!newToken);
+  };
+
+  /* istanbul ignore next */
   useEffect(()=> {
-    (async () => {
+    const load = async () => {
       await fetch(`${HoldingsBackend}/?username=${user}`,
       { method: 'GET' })
         .then(res => res.json())
         .then(res => {
-          if(res.status !== HTTP['200']){
-            throw new Error('Could not get');
-          }
-          const assets = res.body as Assets;
+          console.log(res)
+          const assets = res as Assets;
           setHoldings(assets);
         })
         .catch(e => {
-          console.log(e.message)
+          console.log(e.message);
         });
-    });
+    };
+    load();
 
-  }, [holdings])
+  }, [user, newToken]);
 
   return (
     <div className="App">
@@ -36,7 +40,7 @@ function Dashbord({user}:{user: string}) {
       <div id='dashboard-container'>
           <div id='dashboard_heading'>Dashboard</div>
           <Table assets={holdings}/>
-          <CryptoForm username={user}/>
+          <CryptoForm username={user} update={update}/>
       </div>
     </div>
   );

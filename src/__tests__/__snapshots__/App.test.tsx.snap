@@ -358,66 +358,7 @@ exports[`Test private render 1 Compare snapshot 1 1`] = `
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr
-          className="table-row-class"
-        >
-          <td
-            className="table_data"
-          >
-            bitcoin
-          </td>
-          <td
-            className="table_data"
-          >
-            0.5
-          </td>
-          <td
-            className="table_data"
-          >
-            10000
-          </td>
-          <td
-            className="table_data"
-          >
-            5000
-          </td>
-          <td
-            className="table_data"
-          >
-            50%
-          </td>
-        </tr>
-        <tr
-          className="table-row-class"
-        >
-          <td
-            className="table_data"
-          >
-            ethereum
-          </td>
-          <td
-            className="table_data"
-          >
-            25
-          </td>
-          <td
-            className="table_data"
-          >
-            200
-          </td>
-          <td
-            className="table_data"
-          >
-            5000
-          </td>
-          <td
-            className="table_data"
-          >
-            50%
-          </td>
-        </tr>
-      </tbody>
+      <tbody />
     </table>
     <form
       id="crypto-input-form"
@@ -436,6 +377,7 @@ exports[`Test private render 1 Compare snapshot 1 1`] = `
           id="dashboard_token"
           onChange={[Function]}
           type="text"
+          value=""
         />
       </div>
       <div
@@ -452,6 +394,7 @@ exports[`Test private render 1 Compare snapshot 1 1`] = `
           id="dashboard_quantity"
           onChange={[Function]}
           type="number"
+          value={0}
         />
       </div>
       <div

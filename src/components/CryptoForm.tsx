@@ -4,7 +4,10 @@ import { AssetsService } from '../data/config';
 import './css/CryptoForm.css';
 
 
-export const CryptoForm = ({ username }: { username?: string }) => {
+export const CryptoForm = ({
+    username, update }: {
+    username?: string,
+    update?: ()=>void }) => {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
     const [state, setState] = useState({
@@ -30,6 +33,8 @@ export const CryptoForm = ({ username }: { username?: string }) => {
                     if (res.status !== HTTP['200']) {
                         throw new Error('Operation failed');
                     }
+                    setState({...state, token: '', quantity: 0})
+                    update!(); // Update tokens table on success
                 })
                 .catch(() => {
                     setError(true);
@@ -67,14 +72,14 @@ export const CryptoForm = ({ username }: { username?: string }) => {
                 Token
             </label>
             <input type='text' id='dashboard_token' onChange={e => changeEvent(e, ID['0'])}
-                className='crypto-text-input-class' />
+                className='crypto-text-input-class' value={state.token} />
         </div>
         <div className='crypto-input-field'>
             <label htmlFor='dashboard_quantity' className='crypto-input-label-class'>
                 Qty. Owned
             </label>
             <input type='number' id='dashboard_quantity' onChange={e => changeEvent(e, ID['1'])}
-                className='crypto-text-input-class' />
+                className='crypto-text-input-class' value={state.quantity} />
         </div>
         <div id='crypto-button-container'>
             <button type='submit' id='dashboard_add_button'
