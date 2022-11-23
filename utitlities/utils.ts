@@ -66,7 +66,7 @@ export class Portforlio  {
             const temp: PortfolioRes = {
                 token: ele.token,
                 quantity: ele.quantity,
-                totalValue: +(ele.quantity * this.prices[ele.token].usd).toFixed(2),
+                totalValue: +(ele.quantity * this.prices[ele.token].usd).toFixed(0),
                 price: this.prices[ele.token].usd};
             this.userPortfolio = [...this.userPortfolio, temp];
         });
@@ -74,7 +74,7 @@ export class Portforlio  {
             this.totalValue += asset.totalValue;
         });
         this.userPortfolio.map(asset => {
-            const alloc = +((asset.totalValue / this.totalValue) * 100).toFixed(1);
+            const alloc = +((asset.totalValue / this.totalValue) * 100).toFixed(0);
             asset.allocation = alloc;
         });
     };
