@@ -11,7 +11,7 @@ function App() {
   /* istanbul ignore next */
   const authenticate = (User: string) => {
     setAuth(true);
-    setuserName(User)
+    setuserName(User);
   };
   return (
     <HashRouter>

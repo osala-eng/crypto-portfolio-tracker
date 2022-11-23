@@ -34,7 +34,8 @@ export const CryptoForm = ({
                         throw new Error('Operation failed');
                     }
                     setState({...state, token: '', quantity: 0})
-                    update!(); // Update tokens table on success
+                    // Update tokens table on success
+                    update!();
                 })
                 .catch(() => {
                     setError(true);
