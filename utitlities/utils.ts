@@ -42,7 +42,7 @@ export class Portforlio  {
         private readonly data: Array<UserAssets>,
         private readonly vscurrencies: string = 'usd',
         private readonly apiEndpoint: string = 'https://api.coingecko.com/api/v3/simple/price'){
-            this.data.map((ele) => this.tokenIds += `${ele.token},`);
+            this.data.forEach(ele => this.tokenIds += `${ele.token},`);
         };
 
     /**
