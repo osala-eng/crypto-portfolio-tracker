@@ -5,7 +5,7 @@ import './css/Register.css';
 import {LoginErr, Loading } from './Messages';
 import {useNavigate} from 'react-router-dom';
 
-const Login = ({authenticate}:{authenticate?: ()=> void }) => {
+const Login = ({authenticate}:{authenticate?: (user: string)=> void }) => {
     const [state, setState] = useState({
         username: '',
         password: '',
@@ -61,7 +61,7 @@ const Login = ({authenticate}:{authenticate?: ()=> void }) => {
                         throw new Error('User registration failed');
                     }
                     else {
-                       authenticate!();
+                       authenticate!(state.username);
                        navigate('/dashboard');
                     }
                 })

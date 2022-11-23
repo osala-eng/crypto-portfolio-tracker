@@ -8,7 +8,7 @@ import Logo from '../components/Logo';
 import ProductHeadline from '../components/ProductHeadline';
 import Register from '../components/Register';
 
-function Home({authenticate}:{authenticate?: ()=>void}) {
+function Home({authenticate}:{authenticate?: (user: string)=>void}) {
   return (
     <div className="App">
       <Logo/>

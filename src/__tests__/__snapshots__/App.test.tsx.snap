@@ -434,6 +434,7 @@ exports[`Test private render 1 Compare snapshot 1 1`] = `
         <input
           className="crypto-text-input-class"
           id="dashboard_token"
+          onChange={[Function]}
           type="text"
         />
       </div>
@@ -449,6 +450,7 @@ exports[`Test private render 1 Compare snapshot 1 1`] = `
         <input
           className="crypto-text-input-class"
           id="dashboard_quantity"
+          onChange={[Function]}
           type="text"
         />
       </div>
@@ -456,11 +458,23 @@ exports[`Test private render 1 Compare snapshot 1 1`] = `
         id="crypto-button-container"
       >
         <button
+          disabled={false}
           id="dashboard_add_button"
+          onClick={[Function]}
           type="submit"
         >
           Add Asset
         </button>
+        <div
+          id="add_asset_error"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          Error: Please fill all the details
+        </div>
       </div>
     </form>
   </div>

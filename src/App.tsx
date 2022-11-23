@@ -7,9 +7,11 @@ import Private from './pages/Private';
 
 function App() {
   const [auth, setAuth] = useState(false);
+  const [user, setuserName] = useState('JohnW');
   /* istanbul ignore next */
-  const authenticate = () => {
+  const authenticate = (User: string) => {
     setAuth(true);
+    setuserName(User)
   };
   return (
     <HashRouter>
@@ -17,7 +19,7 @@ function App() {
         <Route path='/' element={<Home authenticate={authenticate}/>}/>
         <Route path='/dashboard' element={
           <Private access={auth}>
-            <Dashbord/>
+            <Dashbord user={user}/>
           </Private>
         }/>
       </Routes>
