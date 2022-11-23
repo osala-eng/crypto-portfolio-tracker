@@ -1,7 +1,7 @@
 import {DynamoDB} from 'aws-sdk';
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 import { Assets, AssetQuery, CmpHash, DbResponse, UserCredentials } from './types';
-import * as crypto from 'crypto';
+import {createHash} from 'crypto';
 
 /**
  * Class DataAccess - Handles AWS data operations
@@ -40,8 +40,7 @@ export class DataAccess {
         const { Item } = await this.docClient.get({
             TableName: this.tableName,
             Key: {
-                username: user
-            }})
+                username: user}})
             .promise();
 
         return Item as UserCredentials;
@@ -57,8 +56,7 @@ export class DataAccess {
             TableName: this.tableName,
             KeyConditionExpression: 'username = :user',
             ExpressionAttributeValues: {
-                ':user': user
-            }})
+                ':user': user}})
             .promise();
 
         const {Items} = result;
@@ -76,15 +74,13 @@ export class DataAccess {
         const newAsseet = JSON.parse(
             `{"${updateData.token}" : { "quantity": ${updateData.quantity}}}`) as Assets;
         const updateAssets = { ...assets[0].assets, ...newAsseet };
-        // const updateAssets = {bitcoin: {quantity: 1}, ethereum: {quantity: 3}}
 
         return await this.docClient.update({
             Key,
             TableName: this.tableName,
             UpdateExpression: `set assets = :num`,
             ExpressionAttributeValues: {
-                ':num': {...updateAssets}
-            }})
+                ':num': {...updateAssets}}})
             .promise();
     };
 
@@ -101,7 +97,7 @@ export class DataAccess {
      * @returns hashed string
      */
     private createHash(password: string): string {
-        const hasher = crypto.createHash('sha256');
+        const hasher = createHash('sha256');
         return hasher.update(password).digest('hex');
     };
 };

@@ -1,5 +1,5 @@
-import fetch from 'node-fetch';
 import {PortfolioRes} from '../dataLayer/types';
+import fetch from 'node-fetch';
 
 /**
  * Portfolio response array
@@ -29,18 +29,18 @@ interface Prices {
 export class Portforlio  {
     userPortfolio: Port = [];
     private prices: Prices;
-    private tokenIds: string = '';
-    private totalValue: number = 0;
+    private tokenIds = '';
+    private totalValue = 0;
 
     /**
      * Class construcor
      * @param data - Data in type of portfolio response array
-     * @param vs_currencies currency used default to usd
+     * @param vscurrencies currency used default to usd
      * @param apiEndpoint coingecko api endpoint
      */
     constructor(
         private readonly data: Array<UserAssets>,
-        private readonly vs_currencies: string = 'usd',
+        private readonly vscurrencies: string = 'usd',
         private readonly apiEndpoint: string = 'https://api.coingecko.com/api/v3/simple/price'){
             this.data.map((ele) => this.tokenIds += `${ele.token},`);
         };
@@ -50,7 +50,7 @@ export class Portforlio  {
      */
     async fetchPrices() {
         await fetch(
-            `${this.apiEndpoint}/?ids=${this.tokenIds}&vs_currencies=${this.vs_currencies}`,
+            `${this.apiEndpoint}/?ids=${this.tokenIds}&vs_currencies=${this.vscurrencies}`,
             {method: 'GET'})
             .then(res => res.json())
             .then(res => {
@@ -62,7 +62,7 @@ export class Portforlio  {
      * Method to update results after fetching prices
      */
     updateResults() {
-        this.data.map(ele => {
+        this.data.forEach(ele => {
             const temp: PortfolioRes = {
                 token: ele.token,
                 quantity: ele.quantity,
@@ -70,11 +70,12 @@ export class Portforlio  {
                 price: this.prices[ele.token].usd};
             this.userPortfolio = [...this.userPortfolio, temp];
         });
-        this.userPortfolio.map(asset => {
+        this.userPortfolio.forEach(asset => {
             this.totalValue += asset.totalValue;
         });
-        this.userPortfolio.map(asset => {
-            const alloc = +((asset.totalValue / this.totalValue) * 100).toFixed(0);
+        this.userPortfolio.forEach(asset => {
+            const percent = 100;
+            const alloc = +((asset.totalValue / this.totalValue) * percent).toFixed(0);
             asset.allocation = alloc;
         });
     };

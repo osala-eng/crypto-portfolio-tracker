@@ -8,8 +8,7 @@ config.loadFromPath('./skillreactor/config.json');
 
 export const handle = async (
   event: APIGatewayEvent,
-  _context: Context
-) => {
+  _context: Context ) => {
   try {
     const {username} = event.queryStringParameters;
     const DBaccess = new DataAccess();
