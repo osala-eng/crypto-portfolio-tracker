@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { ChangeEvent, ClickEvent, HTTP, ID, MS } from '../data/types';
 import { AssetsService } from '../data/config';
+import Emitter from './Emitter';
 import './css/CryptoForm.css';
 
 
 export const CryptoForm = ({
-    username, update }: {
+    username, update, test=false }: {
     username?: string,
+    test?: boolean
     update?: ()=>void }) => {
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
     const [state, setState] = useState({
         username: username,
         token: '',
-        quantity: 0 });
+        quantity: NaN });
+    const [edit, setEdit] = useState(false)
 
     /* istanbul ignore next */
     const handleSubmit = async (event: ClickEvent) => {
@@ -31,15 +34,19 @@ export const CryptoForm = ({
                     if (res.status !== HTTP['200']) {
                         throw new Error('Operation failed');
                     }
-                    setState({...state, token: '', quantity: 0})
+                    setState({...state, token: '', quantity: NaN});
                     // Update tokens table on success
                     update!();
+                    setEdit(false);
                 })
                 .catch(() => {
                     setError(true);
+                    setState({...state, token: '', quantity: NaN});
+                    setEdit(false);
                 });
         }
     };
+
 
     /* istanbul ignore next */
     useEffect(() => {
@@ -47,8 +54,15 @@ export const CryptoForm = ({
             setError(false);
         }, MS['10000']);
 
+        const listner = Emitter.addListener('edit-assets',
+            ({token, quantity}:{token: string, quantity: number})=>{
+                setEdit(true);
+                setState( s => { return {...s,  token, quantity}})
+        });
+
         return () => {
             clearTimeout(timer);
+            listner.remove();
         }
     }, [error]);
 
@@ -82,7 +96,7 @@ export const CryptoForm = ({
         </div>
         <div id='crypto-button-container'>
             <button type='submit' id='dashboard_add_button'
-                onClick={handleSubmit} disabled={loading}>Add Asset</button>
+                onClick={handleSubmit} disabled={loading}>{(edit || test) ? 'Save' : 'Add Asset'}</button>
             <div id='add_asset_error' style={{ display: error ? 'block' : 'none' }}
             >Error: Please fill all the details</div>
         </div>

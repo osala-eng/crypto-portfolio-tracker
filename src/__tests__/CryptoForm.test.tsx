@@ -2,6 +2,7 @@ import React from "react";
 import {render, screen, waitFor} from '@testing-library/react';
 import userEvent from "@testing-library/user-event";
 import {CryptoForm} from '../components/CryptoForm';
+import renderer from 'react-test-renderer';
 
 jest.setTimeout(20000);
 const options = {
@@ -25,5 +26,13 @@ describe('Test crypto form', ()=> {
         userEvent.type(quantity, '2');
         userEvent.click(button);
 
+    })
+})
+
+describe('Create a snapshot with save button', () => {
+    test('Snapshot test', async()=>{
+        const elem = renderer.create(<CryptoForm test={true}/>);
+        const tree = elem.toJSON();
+        expect(tree).toMatchSnapshot();
     })
 })

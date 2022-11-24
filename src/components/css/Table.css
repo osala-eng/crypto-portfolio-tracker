@@ -20,3 +20,21 @@ table, th, td {
     color: #fff;
     background-color: crimson;
 }
+
+.edit_button{
+    text-decoration: none;
+    color: green;
+    cursor: pointer;
+}
+
+.edit_button:hover{
+    color: #fff;
+    background-color: green;
+}
+
+.table-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}

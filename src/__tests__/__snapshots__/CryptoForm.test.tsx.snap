@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create a snapshot with save button Snapshot test 1`] = `
+<form
+  id="crypto-input-form"
+>
+  <div
+    className="crypto-input-field"
+  >
+    <label
+      className="crypto-input-label-class"
+      htmlFor="dashboard_token"
+    >
+      Token
+    </label>
+    <input
+      className="crypto-text-input-class"
+      id="dashboard_token"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="crypto-input-field"
+  >
+    <label
+      className="crypto-input-label-class"
+      htmlFor="dashboard_quantity"
+    >
+      Qty. Owned
+    </label>
+    <input
+      className="crypto-text-input-class"
+      id="dashboard_quantity"
+      onChange={[Function]}
+      type="number"
+      value={NaN}
+    />
+  </div>
+  <div
+    id="crypto-button-container"
+  >
+    <button
+      disabled={false}
+      id="dashboard_add_button"
+      onClick={[Function]}
+      type="submit"
+    >
+      Save
+    </button>
+    <div
+      id="add_asset_error"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      Error: Please fill all the details
+    </div>
+  </div>
+</form>
+`;
