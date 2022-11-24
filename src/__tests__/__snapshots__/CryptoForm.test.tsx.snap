@@ -43,7 +43,7 @@ exports[`Create a snapshot with save button Snapshot test 1`] = `
   >
     <button
       disabled={false}
-      id="dashboard_add_button"
+      id="dashboard_save_button"
       onClick={[Function]}
       type="submit"
     >
