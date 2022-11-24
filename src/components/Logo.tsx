@@ -1,10 +1,14 @@
 import React from 'react';
-import logo from '../assets/logo.png';
 import './css/Logo.css';
 import { Link } from 'react-router-dom';
 
+const logo = require('../assets/logo.png');
+
+
+
 const logoSize = 150;
-const Logo = () => {
+const Logo = ({logout=false, logoutFn}:
+  {logout?: boolean, logoutFn?: ()=>void}) => {
   return (
     <div id='logo_disp' className='logo-container'>
       <Link to={'/'}>
@@ -14,6 +18,8 @@ const Logo = () => {
       <div id='name_box'>
         <h1 id='company_name'>Crypto Tracker</h1>
       </div>
+      <div id='logout_link' style={{opacity: logout? 1 : 0}}
+        onClick={logoutFn}>Logout</div>
     </div>
   );
 };

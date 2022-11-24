@@ -13,13 +13,20 @@ function App() {
     setAuth(true);
     setuserName(User);
   };
+
+  /* istanbul ignore next */
+  const logOut = () => {
+    setAuth(false);
+    setuserName('');
+  }
+
   return (
     <HashRouter>
       <Routes>
         <Route path='/' element={<Home authenticate={authenticate}/>}/>
         <Route path='/dashboard' element={
           <Private access={auth}>
-            <Dashbord user={user}/>
+            <Dashbord user={user} logoutFn={logOut}/>
           </Private>
         }/>
       </Routes>
