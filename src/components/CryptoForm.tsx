@@ -96,7 +96,7 @@ export const CryptoForm = ({
         </div>
         <div id='crypto-button-container'>
             <button type='submit' id='dashboard_add_button'
-                onClick={handleSubmit} disabled={loading}>{(edit || test) ? 'Save' : 'Add Asset'}</button>
+                onClick={handleSubmit} disabled={loading}>{(edit || test) ? 'Save Asset' : 'Add Asset'}</button>
             <div id='add_asset_error' style={{ display: error ? 'block' : 'none' }}
             >Error: Please fill all the details</div>
         </div>

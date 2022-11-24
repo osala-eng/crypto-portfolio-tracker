@@ -47,7 +47,7 @@ exports[`Create a snapshot with save button Snapshot test 1`] = `
       onClick={[Function]}
       type="submit"
     >
-      Save
+      Save Asset
     </button>
     <div
       id="add_asset_error"
