@@ -33,7 +33,7 @@ exports[`All snapshots match tree 1`] = `
       id="logout_link"
       style={
         Object {
-          "opacity": 0,
+          "display": "none",
         }
       }
     >
@@ -334,7 +334,7 @@ exports[`Test private render 1 Compare snapshot 1 1`] = `
         id="logout_link"
         style={
           Object {
-            "opacity": 1,
+            "display": "block",
           }
         }
       >

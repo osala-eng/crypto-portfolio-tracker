@@ -18,7 +18,7 @@ const Logo = ({logout=false, logoutFn}:
       <div id='name_box'>
         <h1 id='company_name'>Crypto Tracker</h1>
       </div>
-      <div id='logout_link' style={{opacity: logout? 1 : 0}}
+      <div id='logout_link' style={{display: logout ? 'block' : 'none'}}
         onClick={logoutFn}>Logout</div>
     </div>
   );
