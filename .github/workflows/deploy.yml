@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: staticsite
-      url: ${{ steps.outputs.deployment.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     steps:
       - name: Deployment
