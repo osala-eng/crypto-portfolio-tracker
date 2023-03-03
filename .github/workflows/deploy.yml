@@ -1,0 +1,53 @@
+# Build and deploy react project to github pages
+name: build and deploy react project using github pages
+on:
+  # Run this workflow on push to frontend
+  push:
+    branches: ["frontend"]
+  
+  # Allow dispatching workflow manually
+  workflow_dispatch:
+
+# Set permissions for the github token
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v3
+      - name: Setup node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - shell: bash
+        run: |
+          npm ci
+          npm run build
+          
+      # Upload build files
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: build
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: staticsite
+      url: ${{ steps.outputs.deployment.page_url }}
+    needs: build
+    steps:
+      - name: Deployment
+        id: deployment
+        uses: actions/deploy-pages@v1
+              
